@@ -3,7 +3,7 @@ import { FeadCard } from "../feedCard/FeadCard";
 
 export const Feed = () => {
   return (
-    <div className="flex flex-col  items-center h-full pt-16 w-3/4 bg-black">
+    <div className="feed flex flex-col md:mx-12  my-12 items-center  pt-4  w-full overflow-x-auto">
       <FeadCard />
       <FeadCard />
       <FeadCard />

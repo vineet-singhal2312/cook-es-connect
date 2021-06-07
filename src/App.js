@@ -3,18 +3,18 @@ import React from "react";
 import "./App.css";
 import { Feed } from "./components/feed/Feed";
 import { Header } from "./components/header/Header";
-import { SideNav } from "./components/sideNav/SideNav";
+import { BottomNav } from "./components/bottomNav/BottomNav";
 
 function App() {
   return (
-    <>
+    <div className="App">
       <Header />
 
-      <div className=" sm:container sm:mx-auto px-20 h-screen flex">
-        <SideNav />
+      <div className=" sm:container md:mx-auto md:px-20 h-screen flex">
+        <BottomNav />
         <Feed />
       </div>
-    </>
+    </div>
   );
 }
 

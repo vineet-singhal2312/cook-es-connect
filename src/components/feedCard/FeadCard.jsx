@@ -4,8 +4,8 @@ import { BiDotsHorizontalRounded } from "react-icons/bi";
 
 export const FeadCard = () => {
   return (
-    <div className="feed-card  bg-blue-400 flex-col">
-      <div className="feed-card-user flex justify-between p-2 h-16 bg-blue-900">
+    <div className="feed-card border border-gray-200   flex-col">
+      <div className="feed-card-user flex justify-between p-2 h-2/6 ">
         <div className="feed-card-top flex-col cursor-pointer">
           <Avatar
             alt="Remy Sharp"
@@ -18,8 +18,10 @@ export const FeadCard = () => {
           <BiDotsHorizontalRounded />
         </div>
       </div>
-      <div className="feed-card-middle">sdas</div>
-      <div>sdas</div>
+      <div className="feed-card-middle h-3/6 border-t border-b border-gray-200 ">
+        sdas
+      </div>
+      <div className="feed-card-bottum h-1/6 px-2 pb-2 ">sdas</div>
     </div>
   );
 };

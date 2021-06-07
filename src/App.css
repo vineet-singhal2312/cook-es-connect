@@ -1,5 +1,7 @@
 @import "./style/Header.css";
 @import "./style/FeedCard.css";
+@import "./style/Feed.css";
+@import "./style/BottomNav.css";
 
 * {
   padding: 0;
@@ -8,4 +10,41 @@
 }
 .App {
   text-align: center;
+  /* background-color: unset; */
+  /* background: rgb(238, 174, 202);
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  ); */
+  /* background: rgb(238, 174, 202);
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 0.3816877092633929) 0%,
+    rgba(148, 187, 233, 1) 100%
+  ); */
+
+  /* background: rgb(148, 187, 233);
+  background: radial-gradient(
+    circle,
+    rgba(148, 187, 233, 0.7122199221485469) 0%,
+    rgba(238, 174, 202, 1) 100%
+  ); */
+
+  background: #da4453; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #89216b,
+    #da4453
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #89216b,
+    #da4453
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+:root {
+  --primary-color: #fff;
+  --secondary-color: #7d2c6f;
+  --third-color: unset;
 }

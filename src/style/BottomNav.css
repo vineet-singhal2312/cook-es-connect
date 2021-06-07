@@ -1,0 +1,80 @@
+/* .bottom-nav::-webkit-scrollbar {
+  display: none;
+} */
+.bottom-nav {
+  position: fixed;
+  bottom: 0%;
+  right: 20%;
+  /* top: 17%; */
+  height: 15vh;
+  width: 60vw;
+  /* margin-top: 11rem; */
+  /* background: rgba(17, 139, 211, 0.6); */
+
+  /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px); */
+
+  background: rgba(225, 223, 215, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.8);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  border-top-right-radius: 100%;
+  border-top-left-radius: 100%;
+  z-index: 1;
+  transition: all 0.5s;
+  overflow-x: hidden;
+  /* transform: rotate(-90deg); */
+
+  /* background: rgba(225, 223, 215, 0.55);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18); */
+}
+.bottom-nav:hover {
+  /* border: 1px solid rgba(255, 255, 255, 0.18); */
+  box-shadow: 0 32px 64px 0 rgba(17, 139, 211, 0.6);
+}
+.bottom-nav-item1 {
+  position: absolute;
+  left: 10%;
+  bottom: 15%;
+}
+.bottom-nav-item2 {
+  position: absolute;
+  left: 28.75%;
+  bottom: 35%;
+}
+.bottom-nav-item3 {
+  position: absolute;
+  left: 47.5%;
+  bottom: 50%;
+}
+.bottom-nav-item4 {
+  position: absolute;
+  left: 66.25%;
+  bottom: 35%;
+}
+.bottom-nav-item5 {
+  position: absolute;
+  left: 85%;
+  bottom: 15%;
+}
+.bottom-nav-icon {
+  font-size: 2.25rem;
+  color: var(--textColor);
+}
+.bottom-nav-icon:hover {
+  transform: scale(1.5);
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 500px) {
+  .bottom-nav-icon {
+    font-size: 1.5rem;
+  }
+}
