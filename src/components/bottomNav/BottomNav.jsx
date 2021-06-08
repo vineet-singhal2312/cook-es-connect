@@ -1,27 +1,3 @@
-// import React from "react";
-// import { SideNavUserCard } from "../sideNavUserCard/SideNavUserCard";
-
-// export const SideNav = () => {
-//   return (
-//     <div className="bottom-nav h-screen w-1/4 pt-16 border-l border-r border-gray-200 overflow-x-auto">
-//       <SideNavUserCard />
-//       <SideNavUserCard />
-//       <SideNavUserCard />
-//       <SideNavUserCard />
-//       <SideNavUserCard />
-//       <SideNavUserCard />
-//       <SideNavUserCard />
-//       <SideNavUserCard />
-//       <SideNavUserCard />
-//       <SideNavUserCard />
-//       <SideNavUserCard />
-//       <SideNavUserCard />
-//       <SideNavUserCard />
-//       <SideNavUserCard />
-//     </div>
-//   );
-// };
-
 import { IoHome } from "react-icons/io5";
 import { AiOutlineHome } from "react-icons/ai";
 
@@ -34,35 +10,49 @@ import { FaHistory } from "react-icons/fa";
 import { RiPlayList2Line } from "react-icons/ri";
 import { MdWatchLater } from "react-icons/md";
 import { FaThumbsUp } from "react-icons/fa";
-// import { div } from "react-router-dom";
-// import { useReduce } from "../../providers/useReducerProvider";
+import { Link, NavLink } from "react-router-dom";
 
 export const BottomNav = () => {
-  // const { setIsSideNav } = useReduce();
-
-  // const closeSideNav = () => {
-  //   document.getElementById("sideNav").style.width = "0%";
-  //   setIsSideNav(false);
-  // };
   return (
     <>
       <nav className="bottom-nav md:block hidden" id="sideNav">
-        <div className="link bottom-nav-item1" to="/">
+        <NavLink
+          activeClassName="active-link"
+          className="link bottom-nav-item1"
+          to="/message"
+        >
           <AiOutlineMessage className="bottom-nav-icon" />
-        </div>
-        <div className="link bottom-nav-item2" to="/history">
+        </NavLink>
+        <NavLink
+          activeClassName="active-link"
+          className="link bottom-nav-item2"
+          to="/history"
+        >
           <AiOutlineNotification className="bottom-nav-icon" />
-        </div>
-        <div className="bottom-nav-item3">
+        </NavLink>
+        <NavLink
+          end
+          activeClassName="active-link"
+          className="bottom-nav-item3"
+          to="/"
+        >
           {" "}
-          <AiOutlineHome className="bottom-nav-icon" />
-        </div>
-        <div className="link bottom-nav-item4" to="/later">
+          <AiOutlineHome className="bottom-nav-icon " />
+        </NavLink>
+        <NavLink
+          activeClassName="active-link"
+          className="link bottom-nav-item4"
+          to="/profile"
+        >
           <CgProfile className="bottom-nav-icon" />
-        </div>{" "}
-        <div className="link bottom-nav-item5" to="/liked">
+        </NavLink>{" "}
+        <NavLink
+          activeClassName="active-link"
+          className="link bottom-nav-item5"
+          to="/liked"
+        >
           <AiOutlineLogout className="bottom-nav-icon" />
-        </div>
+        </NavLink>
       </nav>
     </>
   );

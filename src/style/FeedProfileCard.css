@@ -1,17 +1,19 @@
-.feed-card {
-  min-height: 250px;
-  width: 75%;
+.fedd-profile-card {
+  min-height: 100px;
+  width: 25%;
   /* border: 1px solid black; */
 
   background: var(--card-background-color);
   /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
   backdrop-filter: blur(0.5px);
   -webkit-backdrop-filter: blur(0.5px);
-  /* border-radius: 10px; */
+  border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
-#feed-card-avtar {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
+#feed-profile-avtar {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
 }

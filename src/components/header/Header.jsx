@@ -17,7 +17,7 @@ export const Header = () => {
   console.log(header);
   const dispatch = useDispatch();
   return (
-    <div className="header z-10 fixed w-full  h-12 px-4 flex justify-between items-center bg-transparent">
+    <div className="header z-50 fixed w-full  h-12 px-4 flex justify-between items-center bg-transparent">
       {/* <HeaderLeft />
       <HeaderMiddle />
       <HeaderRight /> */}

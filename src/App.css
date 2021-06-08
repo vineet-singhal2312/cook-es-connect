@@ -1,7 +1,10 @@
 @import "./style/Header.css";
 @import "./style/FeedCard.css";
-@import "./style/Feed.css";
+@import "./style/FeedPosts.css";
 @import "./style/BottomNav.css";
+@import "./style/CreatPost.css";
+@import "./style/FeedProfileCard.css";
+@import "./style/Profile.css";
 
 * {
   padding: 0;
@@ -31,12 +34,12 @@
     rgba(238, 174, 202, 1) 100%
   ); */
 
-  background: #da4453; /* fallback for old browsers */
+  /* background: #da4453; 
   background: -webkit-linear-gradient(
     to right,
     #89216b,
     #da4453
-  ); /* Chrome 10-25, Safari 5.1-6 */
+  );  */
   background: linear-gradient(
     to right,
     #89216b,
@@ -47,4 +50,14 @@
   --primary-color: #fff;
   --secondary-color: #7d2c6f;
   --third-color: unset;
+  --card-background-color: rgba(225, 223, 215, 0.15);
+}
+
+button,
+input {
+  outline: none;
+}
+
+.active-link {
+  color: red;
 }
