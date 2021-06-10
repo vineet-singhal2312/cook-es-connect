@@ -10,10 +10,10 @@ export const Feed = () => {
     <>
       <Header />
 
-      <div className="feed sm:container md:mx-auto md:px-20 h-screen flex flex-col">
+      <div className="feed-outer-div sm:container md:mx-auto md:px-20 h-screen flex flex-col">
         <BottomNav />
 
-        <div className="feed-post flex flex-col my-12 items-center  pt-4  w-full overflow-x-auto">
+        <div className="feed-posts flex flex-col mt-12 items-center  pt-4  w-full overflow-x-auto">
           <div className="flex w-full px-16">
             <FeedProfileCard />
             <CreatPost />

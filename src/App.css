@@ -5,6 +5,7 @@
 @import "./style/CreatPost.css";
 @import "./style/FeedProfileCard.css";
 @import "./style/Profile.css";
+@import "./style/SignUp.css";
 
 * {
   padding: 0;

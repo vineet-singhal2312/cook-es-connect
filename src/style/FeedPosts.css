@@ -1,11 +1,11 @@
-.feed-post::-webkit-scrollbar {
+.feed-posts::-webkit-scrollbar {
   display: none;
 }
-.feed-post {
-  height: 85vh;
+.feed-posts {
+  height: 100vh;
 }
 @media only screen and (max-width: 600px) {
-  .feed-post {
+  .feed-posts {
     height: 100vh;
     margin-bottom: 0rem;
   }

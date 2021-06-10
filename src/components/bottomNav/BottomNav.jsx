@@ -49,7 +49,7 @@ export const BottomNav = () => {
         <NavLink
           activeClassName="active-link"
           className="link bottom-nav-item5"
-          to="/liked"
+          to="/logout"
         >
           <AiOutlineLogout className="bottom-nav-icon" />
         </NavLink>

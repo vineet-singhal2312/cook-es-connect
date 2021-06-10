@@ -1,0 +1,146 @@
+.sign-up-card {
+  width: 500px;
+  height: 600px;
+  background: var(--card-background-color);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  font-size: 1rem;
+  font-family: "Spartan";
+  color: var(--textColor);
+  display: grid;
+  place-items: center;
+}
+.sign-up-empty-div {
+  background: rgba(225, 223, 215, 0.3);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sign-up-input {
+  background: var(--card-background-color);
+  backdrop-filter: blur(0.5px);
+  -webkit-backdrop-filter: blur(0.5px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.switch-page-description {
+  color: white;
+}
+.switch-page-link {
+  color: black;
+}
+/* .contact-us {
+  background: var(--primaryColor);
+  padding: 50px 100px;
+
+  border-top: 10px solid var(--secondaryColor);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+} */
+
+label,
+input,
+textarea {
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  line-height: 2rem;
+  font-family: "Spartan";
+  outline: none;
+}
+
+input {
+  margin-bottom: 3rem;
+}
+
+h3 {
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 2rem;
+  font-style: italic;
+  margin: 0 0 0.5em 0;
+}
+
+span {
+  font-size: 0.5rem;
+}
+
+em {
+  color: #f45702;
+  font-weight: bold;
+}
+
+input,
+textarea {
+  border: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  background: var(--textColor);
+  padding-left: 5px;
+  outline: none;
+}
+
+/* input:focus,
+textarea:focus {
+  border: 1px solid #6bd4b1;
+} */
+
+textarea {
+  resize: none;
+}
+/* .login-signup-button-div {
+  display: flex;
+  
+} */
+
+button {
+  height: 30px;
+  width: 130px;
+  margin: 0rem 0.3rem;
+
+  display: block;
+  float: right;
+  line-height: 2rem;
+  padding: 0 20px;
+  border: none;
+  background: var(--secondaryColor);
+  color: white;
+  letter-spacing: 2px;
+  transition: 0.2s all ease-in-out;
+  border-bottom: 2px solid transparent;
+  outline: none;
+  cursor: pointer;
+}
+button:hover {
+  background: inherit;
+  color: var(--secondaryColor);
+  border-bottom: 2px solid var(--secondaryColor);
+}
+
+::selection {
+  background: #ffc7b8;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  border: 1px solid var(--secondaryColor);
+  -webkit-text-fill-color: #2a293e;
+  -webkit-box-shadow: 0 0 0px 1000px var(--textColor) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+@media only screen and (max-width: 500px) {
+  .contact-us {
+    padding: 30px 30px;
+    margin-top: 3rem;
+  }
+}
