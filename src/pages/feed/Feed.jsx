@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { BottomNav } from "../../components/bottomNav/BottomNav";
 import { CreatPost } from "../../components/creatPost/CreatPost";
 import { FeadCard } from "../../components/feedCard/FeadCard";
@@ -6,6 +7,7 @@ import { FeedProfileCard } from "../../components/feedProfileCard/FeedProfileCar
 import { Header } from "../../components/header/Header";
 
 export const Feed = () => {
+  useEffect(() => {}, []);
   return (
     <>
       <Header />

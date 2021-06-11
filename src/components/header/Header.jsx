@@ -17,7 +17,7 @@ export const Header = () => {
   console.log(header);
   const dispatch = useDispatch();
   return (
-    <div className="header z-50 fixed w-full  h-12 px-4 flex justify-between items-center bg-transparent">
+    <div className="header z-50 fixed w-full  h-12 px-4 flex justify-between items-center bg-transparent text-brand-primaryText ">
       {/* <HeaderLeft />
       <HeaderMiddle />
       <HeaderRight /> */}
@@ -26,7 +26,7 @@ export const Header = () => {
       </div>
       <div></div>
       <div className="w-1/4 md:flex hidden float-right ">
-        <input className="search-bar w-4/5 rounded-2xl" />
+        <input className="search-bar w-4/5 rounded-2xl mb-0 border-brand-primaryText" />
         <div className="search-icon w-1/5 grid place-items-center">
           <AiOutlineSearch />
         </div>

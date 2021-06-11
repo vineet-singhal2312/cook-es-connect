@@ -6,16 +6,17 @@ import { BottomNav } from "./components/bottomNav/BottomNav";
 import { Feed } from "./pages/feed/Feed";
 import { Routes, Route } from "react-router-dom";
 import { Profile } from "./pages/profile/Profile";
-import { SignIn, SignUp } from "./pages/signup/SignUp";
+import { SignUp } from "./pages/signup/SignUp";
+import { LogIn } from "./pages/login/LogIn";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App ">
       <Routes>
         <Route exact={true} path="/" element={<Feed />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/logout" element={<SignUp />} />
-        {/* <Route path="/history" element={<Feed />} /> */}
+        <Route path="/login" element={<LogIn />} />
         {/* <Route path="/liked" element={<Feed />} /> */}
         {/* <Route path="/message" element={<Feed />} /> */}
       </Routes>

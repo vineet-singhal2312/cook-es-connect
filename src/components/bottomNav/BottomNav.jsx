@@ -15,40 +15,43 @@ import { Link, NavLink } from "react-router-dom";
 export const BottomNav = () => {
   return (
     <>
-      <nav className="bottom-nav md:block hidden" id="sideNav">
+      <nav
+        className="bottom-nav md:block hidden text-brand-primaryText"
+        id="sideNav"
+      >
         <NavLink
-          activeClassName="active-link"
-          className="link bottom-nav-item1"
+          activeClassName="text-brand-secondaryText transform scale-150"
+          className="link bottom-nav-item1 icon-hover"
           to="/message"
         >
           <AiOutlineMessage className="bottom-nav-icon" />
         </NavLink>
         <NavLink
-          activeClassName="active-link"
-          className="link bottom-nav-item2"
+          activeClassName="text-brand-secondaryText transform scale-150"
+          className="link bottom-nav-item2 icon-hover"
           to="/history"
         >
           <AiOutlineNotification className="bottom-nav-icon" />
         </NavLink>
         <NavLink
           end
-          activeClassName="active-link"
-          className="bottom-nav-item3"
+          activeClassName="text-brand-secondaryText transform scale-150"
+          className="bottom-nav-item3 icon-hover"
           to="/"
         >
           {" "}
           <AiOutlineHome className="bottom-nav-icon " />
         </NavLink>
         <NavLink
-          activeClassName="active-link"
-          className="link bottom-nav-item4"
+          activeClassName="text-brand-secondaryText transform scale-150"
+          className="link bottom-nav-item4 icon-hover"
           to="/profile"
         >
           <CgProfile className="bottom-nav-icon" />
         </NavLink>{" "}
         <NavLink
-          activeClassName="active-link"
-          className="link bottom-nav-item5"
+          activeClassName="text-brand-secondaryText transform scale-150"
+          className="link bottom-nav-item5 icon-hover"
           to="/logout"
         >
           <AiOutlineLogout className="bottom-nav-icon" />

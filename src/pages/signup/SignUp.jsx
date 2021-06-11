@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SignUpHandler } from "../../utils/SignUp.utils";
 
 export const SignUp = () => {
@@ -7,11 +7,7 @@ export const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
-
-  // console.log(userName);
-  // console.log(email);
-  // console.log(password1);
-  // console.log(password2);
+  const navigate = useNavigate();
 
   return (
     <div className="w-full h-screen grid place-content-center">
@@ -65,6 +61,7 @@ export const SignUp = () => {
 
           <div className="sign-up-button-div mb-4  flex justify-center">
             <button
+              className="sign-up-button text-xl"
               id="customerOrder"
               onClick={(e) =>
                 SignUpHandler(
@@ -76,7 +73,8 @@ export const SignUp = () => {
                   setUserName,
                   setEmail,
                   setPassword1,
-                  setPassword2
+                  setPassword2,
+                  navigate
                 )
               }
             >
@@ -89,7 +87,7 @@ export const SignUp = () => {
 
           <p className="switch-page-description">
             already a user{" "}
-            <Link to="/" className="switch-page-link">
+            <Link to="/login" className="switch-page-link">
               Log In
             </Link>
           </p>

@@ -9,7 +9,8 @@ export const SignUpHandler = async (
   setUserName,
   setEmail,
   setPassword1,
-  setPassword2
+  setPassword2,
+  navigate
 ) => {
   e.preventDefault();
   try {
@@ -18,7 +19,7 @@ export const SignUpHandler = async (
     console.log(password1);
     console.log(password2);
 
-    const res = await ApiService(
+  await ApiService(
       "post",
       {
         userName,
@@ -33,7 +34,7 @@ export const SignUpHandler = async (
     setEmail("");
     setPassword1("");
     setPassword2("");
-    // navigate("/login");
+    navigate("/login");
   } catch (error) {
     console.log(error);
     // console.log(error.data);
