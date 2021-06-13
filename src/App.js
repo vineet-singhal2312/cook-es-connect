@@ -8,8 +8,14 @@ import { Routes, Route } from "react-router-dom";
 import { Profile } from "./pages/profile/Profile";
 import { SignUp } from "./pages/signup/SignUp";
 import { LogIn } from "./pages/login/LogIn";
+import { useSelector } from "react-redux";
 
 function App() {
+  const { isDarkModeEnable } = useSelector((state) => {
+    console.log({ state });
+    return state.dark;
+  });
+  console.log(isDarkModeEnable);
   return (
     <div className="App ">
       <Routes>

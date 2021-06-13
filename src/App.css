@@ -27,6 +27,8 @@
   --secondary-color: #7d2c6f;
   --third-color: unset;
   --card-background-color: rgba(225, 223, 215, 0.15);
+  --primaryText: "#bfbfbf";
+  --secondaryText: "#333333";
 }
 
 button,

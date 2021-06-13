@@ -3,7 +3,7 @@ import { createSlice, current } from "@reduxjs/toolkit";
 export const headerSlice = createSlice({
   name: "header",
   initialState: {
-    ishamburgerMenu: false,
+    isHamburgerMenu: false,
   },
   reducers: {
     hamburgerButtonClicked: (state) => {
@@ -15,7 +15,7 @@ export const headerSlice = createSlice({
 
       return {
         ...state,
-        ishamburgerMenu: !state.ishamburgerMenu,
+        isHamburgerMenu: !state.isHamburgerMenu,
       };
 
       //   console.log(current(state), action);
