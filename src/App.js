@@ -17,7 +17,7 @@ function App() {
   });
   console.log(isDarkModeEnable);
   return (
-    <div className="App ">
+    <div className={isDarkModeEnable ? "App-dark" : "App"}>
       <Routes>
         <Route exact={true} path="/" element={<Feed />} />
         <Route path="/profile" element={<Profile />} />

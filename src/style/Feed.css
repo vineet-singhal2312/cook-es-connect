@@ -1,12 +1,12 @@
 .feed-posts::-webkit-scrollbar {
   display: none;
 }
-.feed-posts {
-  height: 100vh;
+/* .feed-posts {
+  min-height: 100vh;
 }
 @media only screen and (max-width: 600px) {
   .feed-posts {
     height: 100vh;
     margin-bottom: 0rem;
   }
-}
+} */

@@ -3,6 +3,7 @@ import counterReducer from "../features/counter/counterSlice";
 import headerReducer from "../components/header/headerSlice";
 import loginReducer from "../pages/login/loginSlice";
 import darkModeReducer from "../features/darkMode/darkModeSlice";
+import postReducer from "../features/postsSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     header: headerReducer,
     login: loginReducer,
     dark: darkModeReducer,
+    post: postReducer,
   },
 });

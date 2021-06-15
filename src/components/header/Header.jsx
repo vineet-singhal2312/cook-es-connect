@@ -11,9 +11,9 @@ import { hamburgerButtonClicked } from "./headerSlice";
 import { darkModeButtonPressed } from "../../features/darkMode/darkModeSlice";
 
 export const Header = () => {
-  const header = useSelector((state) => {
+  const { header, dark } = useSelector((state) => {
     console.log({ state });
-    return state.header;
+    return state;
   });
   console.log(header);
   const dispatch = useDispatch();
@@ -32,14 +32,15 @@ export const Header = () => {
         <div className="search-icon w-1/5 grid place-items-center">
           <AiOutlineSearch />
         </div>
-        <div class="toggle-button r center w-1/5" id="toggle-button">
+        <div className="toggle-button r center w-1/5" id="toggle-button">
           <input
             type="checkbox"
-            class="checkbox"
-            onClick={() => dispatch(darkModeButtonPressed())}
+            className="checkbox"
+            checked={dark.isDarkModeEnable}
+            onChange={() => dispatch(darkModeButtonPressed())}
           />
-          <div class="knobs"></div>
-          <div class="layer"></div>
+          <div className="knobs"></div>
+          <div className="layer"></div>
         </div>
       </div>
     </div>

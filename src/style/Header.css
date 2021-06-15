@@ -1,5 +1,6 @@
 .header {
-  box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.37);
+  /* box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.37); */
+  box-shadow: 0 1px 8px 0 rgba(255, 255, 255, 0.37);
 }
 .search-bar {
   background: var(--card-background-color);
@@ -8,80 +9,6 @@
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
-/* input[type="checkbox"] {
-  visibility: hidden;
-  checked + label {
-    transform: rotate(360deg);
-    background-color: #000;
-    before {
-      transform: translateX(90px);
-      background-color: #fff;
-    }
-  }
-}
-
-label {
-  display: flex;
-  width: 40px;
-  height: 20px;
-  border: 1px solid;
-  border-radius: 99em;
-  position: relative;
-  transition: transform 0.75s ease-in-out;
-  transform-origin: 50% 50%;
-  cursor: pointer;
-
-  before {
-    transition: transform 0.75s ease;
-    transition-delay: 0.5s;
-    content: "";
-    display: block;
-    position: absolute;
-    width: 54px;
-    height: 54px;
-    background-color: #000;
-    border-radius: 50%;
-    top: 12px;
-    left: 12px;
-  }
-}
-
-.switch-wrap {
-  cursor: pointer;
-  background: #15273b;
-  padding: $padding;
-  width: $width;
-  height: $height;
-  border-radius: $height / 2;
-  input {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-}
-.switch {
-  height: 100%;
-  display: grid;
-  grid-template-columns: 0fr 1fr 1fr;
-  transition: 0.2s;
-  //ICYMI, pseudo elements are treated as grid items
-  &::after {
-    content: "";
-    border-radius: 50%;
-    background: #ccc;
-    grid-column: 2;
-    transition: #ccc 0.2s;
-  }
-}
-input:checked {
-  + .switch {
-    grid-template-columns: 1fr 1fr 0fr;
-    &::after {
-      background-color: #52cf71;
-    }
-  }
-} */
 
 #toggle-button .knobs:before {
   content: "";
