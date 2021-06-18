@@ -3,24 +3,31 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BottomNav } from "../../components/bottomNav/BottomNav";
 import { CreatPost } from "../../components/creatPost/CreatPost";
-import { FeadCard } from "../../components/feedCard/FeadCard";
+// import { FeadCard } from "../../components/feedCard/FeadCard";
 import { FeedProfileCard } from "../../components/feedProfileCard/FeedProfileCard";
 import { Header } from "../../components/header/Header";
 import { fetchPosts } from "../../features/postsSlice";
+import Interceptor from "../../middlewares/Interseptor";
+import loginSlice from "../../features/loginSlice";
+import { FeedPosts } from "./FeedPosts";
 
 export const Feed = () => {
   useEffect(() => {}, []);
   const { token } = useSelector((state) => state.login);
 
   const { posts, status, error } = useSelector((state) => state.post);
+
   const dispatch = useDispatch();
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchPosts(token));
-    }
-  }, [dispatch, status]);
+  // useEffect(() => {
+  //   console.log("pehle ye");
+  //   if (status === "idle") {
+  //     dispatch(fetchPosts(token));
+  //   }
+  // }, [dispatch, status]);
+  console.log(token);
   return (
     <>
+      {/* <Interceptor /> */}
       <Header />
       {status === "loading" && <div>Loading...</div>}
       {status === "error" && <div>Error...{error}</div>}
@@ -33,12 +40,13 @@ export const Feed = () => {
             <CreatPost />
           </div>
 
-          {posts.map((post) => (
-            <FeadCard post={post} />
-          ))}
+          {/* {posts.map((post) => (
+            <FeedCard post={post} />
+          ))} */}
+          <FeedPosts />
           {/* 
-          <FeadCard />
-          <FeadCard /> */}
+          <FeedCard />
+          <FeedCard /> */}
         </div>
       </div>
     </>

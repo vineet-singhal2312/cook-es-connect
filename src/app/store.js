@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "../features/counter/counterSlice";
 import headerReducer from "../components/header/headerSlice";
-import loginReducer from "../pages/login/loginSlice";
+import loginReducer from "../features/loginSlice";
 import darkModeReducer from "../features/darkMode/darkModeSlice";
 import postReducer from "../features/postsSlice";
 

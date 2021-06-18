@@ -1,14 +1,17 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { LogInHandler } from "../../utils/LogIn.utils";
+import { userLogin } from "../../features/loginSlice";
+import { LogInHandler, LogOut } from "../../utils/LogIn.utils";
 import { SignUpHandler } from "../../utils/SignUp.utils";
 
 export const LogIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
-  //   console.log(email);
+  const dispatch = useDispatch();
+  const { isUserLoggedIn } = useSelector((state) => state.login);
+  console.log(isUserLoggedIn);
   //   console.log(password);
 
   return (
@@ -62,22 +65,36 @@ export const LogIn = () => {
           /> */}
 
           <div className="log-in-button-div mb-4  flex justify-center">
-            <button
-              className="log-in-button"
-              id="customerOrder"
-              onClick={(e) =>
-                LogInHandler(
-                  e,
-                  email,
-                  password,
-                  setEmail,
-                  setPassword,
-                  navigate
-                )
-              }
-            >
-              Log In
-            </button>
+            {isUserLoggedIn ? (
+              <button
+                className="log-in-button"
+                id="customerOrder"
+                onClick={() => LogOut(dispatch)}
+              >
+                Log Out
+              </button>
+            ) : (
+              <button
+                className="log-in-button"
+                id="customerOrder"
+                onClick={
+                  (e) =>
+                    LogInHandler(
+                      e,
+                      email,
+                      password,
+                      setEmail,
+                      setPassword,
+                      navigate,
+                      dispatch
+                    )
+
+                  // dispatch(userLogin({ email, password }))
+                }
+              >
+                Log In
+              </button>
+            )}
           </div>
 
           <p className="switch-page-description">

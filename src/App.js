@@ -12,10 +12,10 @@ import { useSelector } from "react-redux";
 
 function App() {
   const { isDarkModeEnable } = useSelector((state) => {
-    console.log({ state });
+    // console.log({ state });
     return state.dark;
   });
-  console.log(isDarkModeEnable);
+  // console.log(isDarkModeEnable);
   return (
     <div className={isDarkModeEnable ? "App-dark" : "App"}>
       <Routes>

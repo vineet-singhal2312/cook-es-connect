@@ -38,8 +38,8 @@
   --dark-background: #2c3e50;
 }
 
-button,
-input {
+button:focus,
+input:focus {
   outline: none;
 }
 

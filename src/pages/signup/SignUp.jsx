@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { SignUpHandler } from "../../utils/SignUp.utils";
+import { TiTick } from "react-icons/ti";
 
 export const SignUp = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
+  const [selectedProfilePicture, setSelectedProfilePicture] = useState("");
+
   const navigate = useNavigate();
 
   return (
@@ -59,7 +62,33 @@ export const SignUp = () => {
             onChange={(e) => setPassword2(e.target.value)}
           />
 
-          <div className="sign-up-button-div mb-4  flex justify-center">
+          {selectedProfilePicture ? (
+            <label class="fileContainer flex justify-center">
+              <p>Uploaded</p>
+              <div className="flex justify-center items-center ml-4">
+                <TiTick />
+              </div>
+
+              <input
+                className="post-image w-1/10"
+                type="file"
+                onChange={(e) => setSelectedProfilePicture(e.target.files[0])}
+                // value={selectedImage}
+              />
+            </label>
+          ) : (
+            <label class="fileContainer">
+              Upload a photo!
+              <input
+                className="post-image w-1/10"
+                type="file"
+                onChange={(e) => setSelectedProfilePicture(e.target.files[0])}
+                // value={selectedImage}
+              />
+            </label>
+          )}
+
+          <div className="sign-up-button-div mb-4 mt-8 flex justify-center">
             <button
               className="sign-up-button text-xl"
               id="customerOrder"
@@ -74,7 +103,8 @@ export const SignUp = () => {
                   setEmail,
                   setPassword1,
                   setPassword2,
-                  navigate
+                  navigate,
+                  selectedProfilePicture
                 )
               }
             >

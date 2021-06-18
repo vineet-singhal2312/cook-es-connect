@@ -35,7 +35,7 @@
 }
 
 .creat-post-btn {
-  width: 30%;
+  width: 25%;
   height: 80%;
   background: white;
   border: none;
@@ -61,12 +61,27 @@
 }
 
 .fileContainer {
-  border: none;
+  /* border: none;
   border-radius: 10px;
   background-color: #f3e6e8;
-  background-image: linear-gradient(315deg, #f3e6e8 0%, #d5d0e5 74%);
+  background-image: linear-gradient(315deg, #f3e6e8 0%, #d5d0e5 74%); */
 
-  padding: 0.5em;
+  background: var(--card-background-color);
+  backdrop-filter: blur(0.5px);
+  -webkit-backdrop-filter: blur(0.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.5em 2em;
+  font-size: 1rem;
+}
+.fileContainer:hover {
+  /* color: white; */
+
+  background: rgba(225, 223, 215, 0.3);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .fileContainer [type="file"] {

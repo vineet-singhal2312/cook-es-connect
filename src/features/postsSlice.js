@@ -35,6 +35,40 @@ export const fetchPosts = createAsyncThunk(
   }
 );
 
+export const addReactionOnPost = createAsyncThunk(
+  "posts/addReactionOnPost",
+  async ({ token, postId, routeName }) => {
+    console.log(token, postId, routeName);
+    const response = await axios.post(
+      `http://localhost:8000/posts/${routeName}`,
+      {
+        postId,
+      },
+      { headers: { authorization: token } }
+    );
+    console.log(response);
+    return response.data.results;
+  }
+);
+
+export const deleteReactionFromPost = createAsyncThunk(
+  "posts/deleteReactionFromPost",
+  async ({ token, postId, routeName }) => {
+    console.log(token, postId, routeName);
+    const response = await axios.delete(
+      `http://localhost:8000/posts/${routeName}`,
+      {
+        data: {
+          postId,
+        },
+        headers: { authorization: token },
+      }
+    );
+    console.log(response);
+    return response.data.results;
+  }
+);
+
 export const postsSlice = createSlice({
   name: "posts",
   initialState,
@@ -54,6 +88,16 @@ export const postsSlice = createSlice({
       state.error = action.error.message;
     },
     [addPost.fulfilled]: (state, action) => {
+      console.log(action);
+      state.status = "fulfilled";
+      state.posts = action.payload;
+    },
+    [addReactionOnPost.fulfilled]: (state, action) => {
+      console.log(action);
+      state.status = "fulfilled";
+      state.posts = action.payload;
+    },
+    [deleteReactionFromPost.fulfilled]: (state, action) => {
       console.log(action);
       state.status = "fulfilled";
       state.posts = action.payload;

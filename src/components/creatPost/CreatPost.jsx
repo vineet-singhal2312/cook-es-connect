@@ -12,7 +12,7 @@ export const CreatPost = () => {
   console.log(postCaption, postTitle, selectedImage);
 
   const { token } = useSelector((state) => state.login);
-  console.log(token);
+  // console.log(token);
   return (
     <div className="creat-post w-full m-4 p-4 flex flex-col justify-around items-start relative">
       <h2 className="w-4/5 h-1/10 flex items-center ">Creat your post</h2>
