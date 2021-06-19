@@ -5,7 +5,7 @@ import {
   deleteReactionFromPost,
 } from "../../features/postsSlice";
 
-export const FeadCardReactionBar = ({ post }) => {
+export const FeedCardReactionBar = ({ post }) => {
   const dispatch = useDispatch();
   const postId = post._id;
   const { token } = useSelector((state) => state.login);
@@ -14,20 +14,20 @@ export const FeadCardReactionBar = ({ post }) => {
   };
   return (
     <>
-      <div className="feed-card-bottom  p-2 flex">
+      <div className="feed-card-reaction-bar p-2 flex ">
         {isReactionOnPost(
           post.likes.map((user) => user._id),
           post.userId._id
         ) ? (
           <button
-            className="like-dislike-button w-1/5 "
+            className="like-dislike-button w-1/5  "
             onClick={() =>
               dispatch(
                 deleteReactionFromPost({ token, postId, routeName: "likes" })
               )
             }
           >
-            {post.likes.length}👍
+            👍
           </button>
         ) : (
           <button
@@ -36,7 +36,7 @@ export const FeadCardReactionBar = ({ post }) => {
               dispatch(addReactionOnPost({ token, postId, routeName: "likes" }))
             }
           >
-            {post.likes.length}👍
+            👍
           </button>
         )}
 
@@ -52,7 +52,7 @@ export const FeadCardReactionBar = ({ post }) => {
               )
             }
           >
-            {post.dislikes.length}👎
+            👎
           </button>
         ) : (
           <button
@@ -63,7 +63,7 @@ export const FeadCardReactionBar = ({ post }) => {
               )
             }
           >
-            {post.dislikes.length}👎
+            👎
           </button>
         )}
 
@@ -79,7 +79,7 @@ export const FeadCardReactionBar = ({ post }) => {
               )
             }
           >
-            {post.hearts.length}💓
+            💓
           </button>
         ) : (
           <button
@@ -90,7 +90,7 @@ export const FeadCardReactionBar = ({ post }) => {
               )
             }
           >
-            {post.hearts.length}💓
+            💓
           </button>
         )}
 
@@ -106,7 +106,7 @@ export const FeadCardReactionBar = ({ post }) => {
               )
             }
           >
-            {post.claps.length}👏
+            👏
           </button>
         ) : (
           <button
@@ -115,7 +115,7 @@ export const FeadCardReactionBar = ({ post }) => {
               dispatch(addReactionOnPost({ token, postId, routeName: "claps" }))
             }
           >
-            {post.claps.length}👏
+            👏
           </button>
         )}
 
@@ -131,7 +131,7 @@ export const FeadCardReactionBar = ({ post }) => {
               )
             }
           >
-            {post.laughs.length}😆
+            😆
           </button>
         ) : (
           <button
@@ -142,7 +142,7 @@ export const FeadCardReactionBar = ({ post }) => {
               )
             }
           >
-            {post.laughs.length}😆
+            😆
           </button>
         )}
       </div>

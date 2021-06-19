@@ -5,6 +5,8 @@ const initialState = {
   status: "idle",
   error: null,
   posts: [],
+  isCommentBox: false,
+  currentPost: {},
 };
 export const addPost = createAsyncThunk(
   "posts/addPostToServer",
@@ -69,10 +71,33 @@ export const deleteReactionFromPost = createAsyncThunk(
   }
 );
 
+export const addCommentOnPost = createAsyncThunk(
+  "posts/addCommentOnPost",
+  async ({ token, postId, userComment }) => {
+    console.log(token, userComment);
+    const response = await axios.post(
+      `http://localhost:8000/posts/comments`,
+      { postId, userComment },
+      { headers: { authorization: token } }
+    );
+    console.log(response);
+    return response.data.results;
+  }
+);
+
 export const postsSlice = createSlice({
   name: "posts",
   initialState,
-  reducers: {},
+  reducers: {
+    CommentBoxButtonPressed: (state, action) => {
+      console.log(action);
+      return {
+        ...state,
+        isCommentBox: !state.isCommentBox,
+        currentPost: action.payload,
+      };
+    },
+  },
 
   extraReducers: {
     [fetchPosts.pending]: (state) => {
@@ -102,9 +127,19 @@ export const postsSlice = createSlice({
       state.status = "fulfilled";
       state.posts = action.payload;
     },
+    [deleteReactionFromPost.fulfilled]: (state, action) => {
+      console.log(action);
+      state.status = "fulfilled";
+      state.posts = action.payload;
+    },
+    [addCommentOnPost.fulfilled]: (state, action) => {
+      console.log(action);
+      state.status = "fulfilled";
+      state.posts = action.payload;
+    },
   },
 });
 
-export const {} = postsSlice.actions;
+export const { CommentBoxButtonPressed } = postsSlice.actions;
 
 export default postsSlice.reducer;

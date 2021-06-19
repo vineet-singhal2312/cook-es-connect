@@ -3,7 +3,8 @@ import Avatar from "@material-ui/core/Avatar";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { addReactionOnPost } from "../../features/postsSlice";
-import { FeadCardReactionBar } from "./FeedCardReactionBar";
+import { FeedCardReactionBar } from "./FeedCardReactionBar";
+import { FeedCardCommentBar } from "./FeedCardCommentBar";
 
 export const FeedCard = ({ post }) => {
   const dispatch = useDispatch();
@@ -58,7 +59,10 @@ export const FeedCard = ({ post }) => {
           />
         </div>
       </div>
-      <FeadCardReactionBar post={post} />
+      <div className="feed-card-bottom flex flex-col ">
+        <FeedCardReactionBar post={post} />
+        <FeedCardCommentBar post={post} />
+      </div>
     </div>
   );
 };

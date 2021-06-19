@@ -28,6 +28,14 @@ function Interceptor() {
             //     setIsAxiosFullfil(false);
             //   }, 5000);
           }
+          if (code === 400) {
+            console.log("Please fill correct information!!");
+            //   setIsAxiosFullfil(true);
+            //   setTimeout(() => {
+            //     setIsAxiosFullfil(false);
+            //   }, 5000);
+          }
+
           if (code === 404) {
             console.log("status code 404");
             //   setIsAxiosFullfil(true);

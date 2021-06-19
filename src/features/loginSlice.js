@@ -6,6 +6,7 @@ const initialState = JSON.parse(localStorage?.getItem("login")) || {
   isUserLoggedIn: false,
   name: null,
   profilePicture: null,
+  
 };
 
 export const userLogin = createAsyncThunk(

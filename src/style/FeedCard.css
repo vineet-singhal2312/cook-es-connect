@@ -1,13 +1,9 @@
 .feed-card {
-  /* min-height: 100%; */
   width: 50%;
-  /* border: 1px solid black; */
 
   background: var(--card-background-color);
-  /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
   backdrop-filter: blur(0.5px);
   -webkit-backdrop-filter: blur(0.5px);
-  /* border-radius: 10px; */
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 #feed-card-avtar {
@@ -23,27 +19,64 @@
   min-height: 225px;
 }
 .feed-card-bottom {
+  min-height: 125px;
+}
+.feed-card-reaction-bar {
   min-height: 50px;
 }
-.feed-card-content-div {
-  word-wrap: break-word;
-  white-space: pre-line;
-  /* overflow: auto; */
-  /* min-height: 80%; */
+.feed-card-comment-bar {
+  min-height: 75px;
 }
-.feed-card-content {
-  /* min-height: 80%;
-  width: 100%;
-  overflow: auto;
-  overflow-x: hidden;
-  overflow-y: hidden; */
-  word-wrap: break-word;
+.reaction-count-bar {
+  min-height: 25px;
 }
-.like-dislike-button:hover {
+.comment-box {
+  min-height: 50px;
+}
+.comment-input {
   background: var(--card-background-color);
   /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
   backdrop-filter: blur(0.5px);
   -webkit-backdrop-filter: blur(0.5px);
-  border-radius: 10px;
+  border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.feed-card-content-div {
+  word-wrap: break-word;
+  white-space: pre-line;
+}
+.feed-card-content {
+  word-wrap: break-word;
+}
+
+.add-comment-btn {
+  background-color: #f3e6e8;
+  background-image: linear-gradient(315deg, #f3e6e8 0%, #d5d0e5 74%);
+}
+
+.like-dislike-button:hover {
+  font-size: 1.25rem;
+}
+.post-comments-box {
+  height: 400px;
+  width: 650px;
+  top: 25%;
+  left: 29%;
+  /* border: 1px solid rgba(255, 255, 255, 0.18); */
+  background-color: #f3e6e8;
+  background-image: linear-gradient(315deg, #f3e6e8 0%, #d5d0e5 74%);
+}
+
+.comments {
+  height: 330px;
+}
+.comments::-webkit-scrollbar {
+  display: none;
+}
+.comment-input-comments-box {
+  /* background: var(--card-background-color);
+  backdrop-filter: blur(0.5px);
+  -webkit-backdrop-filter: blur(0.5px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18); */
 }

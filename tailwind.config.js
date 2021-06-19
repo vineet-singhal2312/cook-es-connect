@@ -15,6 +15,7 @@ module.exports = {
           primaryText: "#bfbfbf",
           secondaryText: "#333333",
           border: "#bfbfbf",
+          secondaryBorder: "#333333",
         },
       },
     },

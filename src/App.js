@@ -9,6 +9,7 @@ import { Profile } from "./pages/profile/Profile";
 import { SignUp } from "./pages/signup/SignUp";
 import { LogIn } from "./pages/login/LogIn";
 import { useSelector } from "react-redux";
+import Interceptor from "./middlewares/Interseptor";
 
 function App() {
   const { isDarkModeEnable } = useSelector((state) => {
@@ -16,8 +17,10 @@ function App() {
     return state.dark;
   });
   // console.log(isDarkModeEnable);
+
   return (
-    <div className={isDarkModeEnable ? "App-dark" : "App"}>
+    <div className={isDarkModeEnable ? "dark-theme" : "light-theme"}>
+      <Interceptor />
       <Routes>
         <Route exact={true} path="/" element={<Feed />} />
         <Route path="/profile" element={<Profile />} />
