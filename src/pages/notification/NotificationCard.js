@@ -1,16 +1,18 @@
 import React from "react";
 import Avatar from "@material-ui/core/Avatar";
+import { useNavigate } from "react-router-dom";
 
 export const NotificationCard = ({ notification }) => {
+  const navigate = useNavigate();
+  console.log(notification.sourceUserId);
   return (
     <div
-      className="bottom-nav-user-card w-full h-24 text-brand-secondaryText border border-brand-border p-2 flex cursor-pointer hover:bg-gray-200  items-center"
-      //   onClick={() => {
-      //     navigate(`/users/${user._id}`);
-      //     setIsSearch(false);
-      //   }}
+      className="bottom-nav-user-card w-4/5 h-24 border border-brand-border p-2  flex justify-between cursor-pointer hover:bg-gray-200  items-center"
+      onClick={() => {
+        navigate(`/users/${notification.sourceUserId._id}`);
+      }}
     >
-      <div className="w-3/5 flex">
+      <div className="w-3/5 flex ">
         {" "}
         <Avatar
           alt="Remy Sharp"
@@ -22,6 +24,13 @@ export const NotificationCard = ({ notification }) => {
           <small className="normal-case ml-1">{notification.message}</small>{" "}
         </h1>
       </div>
+      {notification.postId?.imageUrl && (
+        <img
+          className="h-4/5 w-1/10"
+          alt="post img"
+          src={notification.postId.imageUrl}
+        />
+      )}{" "}
     </div>
   );
 };

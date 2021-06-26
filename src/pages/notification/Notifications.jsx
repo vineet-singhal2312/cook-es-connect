@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getNotifications } from "../../features/notificationSlice";
 
 import { ProfileInfo } from "../../components/profileInfo/ProfileInfo";
-import { ProfilePictureCard } from "../../components/profilePictureCard/ProfilePictureCard";
+import { ProfilePictureCard } from "../profile/profilePictureCard/ProfilePictureCard";
 // import { useDispatch, useSelector } from "react-redux";
 import { PostCard } from "../../components/PostCard/PostCard";
 import { fetchPosts } from "../../features/postsSlice";
@@ -45,8 +45,9 @@ export const Notifications = () => {
           {/* <ProfilePictureCard profileData={profileData} /> */}
 
           {/* <ProfileInfo /> */}
+          <h1 className="text-3xl font-bold">Notifications</h1>
 
-          <div className="grid place-items-center mt-2 w-full mb-32">
+          <div className="grid place-items-center mt-4 w-full mb-32">
             {notifications.map((notification) => (
               <NotificationCard notification={notification} />
             ))}

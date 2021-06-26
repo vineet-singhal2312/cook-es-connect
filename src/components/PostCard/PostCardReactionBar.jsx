@@ -19,7 +19,7 @@ export const PostCardReactionBar = ({ post }) => {
   const isReactionOnPost = (userIdArrayOnReaction, currentUserId) => {
     return userIdArrayOnReaction.includes(currentUserId);
   };
-  // console.log(post);
+  console.log({ post });
   // console.log(post.hearts.map((user) => user._id));
   // console.log(currentUserId);
   // console.log(isReactionOnPost);
@@ -29,6 +29,7 @@ export const PostCardReactionBar = ({ post }) => {
   //     currentUserId
   //   )
   // );
+
   return (
     <>
       <div className="feed-card-reaction-bar p-2 flex ">

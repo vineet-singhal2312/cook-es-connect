@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import { TiTick } from "react-icons/ti";
 import { GrEdit } from "react-icons/gr";
@@ -7,9 +7,12 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { uploadTimeLinePhoto } from "../../utils/Profile.utiles";
 import {
+  fetchSearchedUserProfileData,
   followProfile,
+  getPostsOfSearchedUser,
   UnFollowProfile,
 } from "../../features/searchedProfileSlice";
+import { fetchProfileData } from "../../features/profileSlice";
 // import { ProfileEditModal } from "./ProfileEditModal";
 // import { EditProfileButtonPressed } from "../../features/profileSlice";
 
@@ -20,9 +23,19 @@ export const SearchedUserProfilePictureCard = ({ profileData }) => {
   const { token, currentUserId } = useSelector((state) => state.login);
   const searchedUserId = profileData._id;
   console.log(profileData);
-
+  const { status, searchedUserProfileData, searchedUserPosts } = useSelector(
+    (state) => state.searchedUserProfile
+  );
   const isFollow = profileData.followers?.includes(currentUserId);
   console.log(isFollow);
+  // useEffect(async () => {
+  //   console.log("pehle ye");
+  //   if (status === "idle") {
+  //     await dispatch(fetchSearchedUserProfileData({ token, searchedUserId }));
+  //     await dispatch(getPostsOfSearchedUser({ token, searchedUserId }));
+  //   }
+  // }, [dispatch, status]);
+
   return (
     <>
       <div className="profile-picture-card relative flex flex-col justify-between">
@@ -44,38 +57,6 @@ export const SearchedUserProfilePictureCard = ({ profileData }) => {
           <h1 className="user-name-profile grid place-items-center absolute -top-8 md:relative md:-top-1 md:left-0 left-28 md:ml-8 text-sm font-semibold md:text-2xl md:w-1/4 capitalize">
             {profileData.userName}
           </h1>
-          {/* {selectedImage ? (
-            <label
-              className="fileContainer flex absolute cursor-pointer bottom-32 right-2 w-1/10 md:bottom-24 md:right-4 md:p-8"
-              onClick={() =>
-                uploadTimeLinePhoto(
-                  token,
-                  selectedImage,
-                  setSelectedImage,
-                  dispatch
-                )
-              }
-            >
-              <div className="flex justify-center items-center md:mr-4">
-                <TiTick />
-              </div>
-              <p className="hidden md:block">Click for upload</p>
-            </label>
-          ) : (
-            <label class="fileContainer flex absolute cursor-pointer bottom-32 right-2 w-1/10 md:bottom-24 md:right-4 md:p-8">
-              <div className="flex justify-center items-center md:mr-4">
-                <GrEdit />
-              </div>
-              <p className="hidden md:block">Timeline</p>
-
-              <input
-                className="post-image w-1/10"
-                type="file"
-                onChange={(e) => setSelectedImage(e.target.files[0])}
-              />
-            </label>
-          )} */}
-          {/* </div> */}
 
           <div className="w-full  md:w-4/5 h-4/5 md:font-semibold flex justify-center items-center md:justify-between mx-2 my-4 md:m-0">
             <div className="follower-following-div flex w-3/4 md:w-1/2  ">
@@ -84,24 +65,29 @@ export const SearchedUserProfilePictureCard = ({ profileData }) => {
                 {profileData.followers?.length} follower
               </div>
               <div className="following w-1/2   md:grid md:place-items-center">
-                0 following
+                {profileData.following?.length} following
               </div>
             </div>
             {isFollow ? (
               <button
                 className="follow-btn bg-button-gradient h-4/5 md:h-full grid place-items-center rounded-lg md:w-1/5 w-1/3 "
-                onClick={() =>
-                  dispatch(UnFollowProfile({ token, searchedUserId }))
-                }
+                onClick={async () => {
+                  await dispatch(UnFollowProfile({ token, searchedUserId }));
+                  await dispatch(
+                    fetchSearchedUserProfileData({ token, searchedUserId })
+                  );
+                  await dispatch(fetchProfileData(token));
+                }}
               >
                 Unfollow
               </button>
             ) : (
               <button
                 className="follow-btn bg-button-gradient h-4/5 md:h-full grid place-items-center rounded-lg md:w-1/5 w-1/3 "
-                onClick={() =>
-                  dispatch(followProfile({ token, searchedUserId }))
-                }
+                onClick={async () => {
+                  await dispatch(followProfile({ token, searchedUserId }));
+                  await dispatch(fetchProfileData(token));
+                }}
               >
                 follow
               </button>

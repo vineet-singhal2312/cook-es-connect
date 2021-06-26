@@ -15,7 +15,7 @@ export const FeedPosts = () => {
     }
   }, [dispatch, status]);
   return (
-    <div className="grid place-items-center mb-32">
+    <div className="grid place-items-center w-full mb-32">
       {posts.map((post) => (
         <PostCard post={post} />
       ))}

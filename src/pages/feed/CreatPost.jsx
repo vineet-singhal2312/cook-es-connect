@@ -14,7 +14,7 @@ export const CreatPost = () => {
   const { token } = useSelector((state) => state.login);
   // console.log(token);
   return (
-    <div className="creat-post w-full m-4 p-4 flex flex-col justify-around items-start relative">
+    <div className="creat-post w-full p-4 flex flex-col justify-around items-start relative">
       <h2 className="w-4/5 h-1/10 flex items-center ">Creat your post</h2>
       <input
         className="post-title px-4"
@@ -60,8 +60,16 @@ export const CreatPost = () => {
         <button
           className="creat-post-btn grid place-items-center rounded-lg"
           onClick={() =>
-  
-            uploadPost(selectedImage , dispatch , token , postTitle ,postCaption , setPostTitle , setPostCaption , setSelectedImage)
+            uploadPost(
+              selectedImage,
+              dispatch,
+              token,
+              postTitle,
+              postCaption,
+              setPostTitle,
+              setPostCaption,
+              setSelectedImage
+            )
           }
         >
           save post

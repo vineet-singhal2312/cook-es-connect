@@ -9,7 +9,7 @@ import { HeaderRight } from "./HeaderRight";
 import { useSelector, useDispatch } from "react-redux";
 import { hamburgerButtonClicked } from "./headerSlice";
 import { darkModeButtonPressed } from "../../features/darkMode/darkModeSlice";
-import { SearchUserList } from "../searchUserList/SearchUserList";
+import { SearchUserList } from "./searchUserList/SearchUserList";
 import {
   fetchAllUsers,
   fetchProfileData,

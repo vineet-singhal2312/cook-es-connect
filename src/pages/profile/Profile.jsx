@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BottomNav } from "../../components/bottomNav/BottomNav";
 import { Header } from "../../components/header/Header";
 import { ProfileInfo } from "../../components/profileInfo/ProfileInfo";
-import { ProfilePictureCard } from "../../components/profilePictureCard/ProfilePictureCard";
+import { ProfilePictureCard } from "./profilePictureCard/ProfilePictureCard";
 import { useDispatch, useSelector } from "react-redux";
 import { PostCard } from "../../components/PostCard/PostCard";
 import { fetchPosts } from "../../features/postsSlice";
@@ -33,9 +33,10 @@ export const Profile = () => {
       <Header />
       <BottomNav />
       <div className="profile sm:container md:mx-auto md:px-20  h-screen flex flex-col items-center">
-        <div className="profile-content flex flex-col md:w-4/5 w-full  mt-12 items-center  pt-4  overflow-x-auto">
-          <ProfilePictureCard profileData={profileData} />
-
+        <div className="profile-content flex flex-col mt-12  items-center  pt-4 h-full w-full overflow-x-auto">
+          <div className="flex justify-center w90">
+            <ProfilePictureCard profileData={profileData} />
+          </div>
           {/* <ProfileInfo /> */}
 
           <div className="grid place-items-center mt-2 w-full mb-32">

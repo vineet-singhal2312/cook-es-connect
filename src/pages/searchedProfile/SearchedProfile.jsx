@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BottomNav } from "../../components/bottomNav/BottomNav";
 import { Header } from "../../components/header/Header";
 import { ProfileInfo } from "../../components/profileInfo/ProfileInfo";
-import { ProfilePictureCard } from "../../components/profilePictureCard/ProfilePictureCard";
+import { ProfilePictureCard } from "../profile/profilePictureCard/ProfilePictureCard";
 import { useDispatch, useSelector } from "react-redux";
 import { PostCard } from "../../components/PostCard/PostCard";
 import { fetchPosts } from "../../features/postsSlice";
@@ -29,11 +29,11 @@ export const SearchedProfile = () => {
   );
   useEffect(async () => {
     console.log("pehle ye");
-    // if (status === "idle") {
-    await dispatch(fetchSearchedUserProfileData({ token, searchedUserId }));
-    await dispatch(getPostsOfSearchedUser({ token, searchedUserId }));
-    // }
-  }, [dispatch, searchedUserId]);
+    if (status === "idle") {
+      await dispatch(fetchSearchedUserProfileData({ token, searchedUserId }));
+      await dispatch(getPostsOfSearchedUser({ token, searchedUserId }));
+    }
+  }, [dispatch, searchedUserId, status]);
   console.log(searchedUserProfileData);
   return (
     <>

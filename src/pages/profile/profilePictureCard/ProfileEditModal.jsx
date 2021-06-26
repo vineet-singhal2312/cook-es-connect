@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   EditProfileButtonPressed,
   updateUserInfo,
-} from "../../features/profileSlice";
+} from "../../../features/profileSlice";
 
 export const ProfileEditModal = () => {
   //   const { isEditProfile } = useSelector((state) => state.profile);

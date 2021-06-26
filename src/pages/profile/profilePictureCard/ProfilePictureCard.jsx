@@ -5,9 +5,9 @@ import { GrEdit } from "react-icons/gr";
 
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { uploadTimeLinePhoto } from "../../utils/Profile.utiles";
+import { uploadTimeLinePhoto } from "../../../utils/Profile.utiles";
 import { ProfileEditModal } from "./ProfileEditModal";
-import { EditProfileButtonPressed } from "../../features/profileSlice";
+import { EditProfileButtonPressed } from "../../../features/profileSlice";
 
 export const ProfilePictureCard = ({ profileData }) => {
   const { isEditProfile } = useSelector((state) => state.profile);
@@ -73,7 +73,7 @@ export const ProfilePictureCard = ({ profileData }) => {
             <div className="follower-following-div flex w-3/4 md:w-1/2  ">
               <div className="follower w-1/2 0  md:grid md:place-items-center">
                 {" "}
-                0 follower
+                {profileData.followers?.length} follower
               </div>
               <div className="following w-1/2   md:grid md:place-items-center">
                 {profileData.following?.length} following
