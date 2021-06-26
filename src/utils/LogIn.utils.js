@@ -14,7 +14,6 @@ export const LogInHandler = async (
   await dispatch(userLogin({ email, password }));
 
   console.log("here again");
-
   navigate("/");
 };
 export const LogOut = (dispatch) => {

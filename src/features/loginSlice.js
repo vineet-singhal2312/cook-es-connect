@@ -6,7 +6,7 @@ const initialState = JSON.parse(localStorage?.getItem("login")) || {
   isUserLoggedIn: false,
   name: null,
   profilePicture: null,
-  
+  currentUserId: null,
 };
 
 export const userLogin = createAsyncThunk(
@@ -25,6 +25,7 @@ export const userLogin = createAsyncThunk(
         token: response.data.token,
         name: response.data.userName,
         profilePicture: response.data.profilePictureImageUrl,
+        currentUserId: response.data.id,
       })
     );
 
@@ -42,6 +43,7 @@ export const loginSlice = createSlice({
         isUserLoggedIn: false,
         name: null,
         profilePicture: null,
+        currentUserId: null,
       };
     },
   },
@@ -52,6 +54,7 @@ export const loginSlice = createSlice({
       state.isUserLoggedIn = true;
       state.name = action.payload.userName;
       state.profilePicture = action.payload.profilePictureImageUrl;
+      state.currentUserId = action.payload.id;
     },
   },
 });

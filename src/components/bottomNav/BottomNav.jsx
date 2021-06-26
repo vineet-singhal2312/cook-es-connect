@@ -29,7 +29,7 @@ export const BottomNav = () => {
         <NavLink
           activeClassName="text-brand-secondaryText transform scale-150"
           className="link bottom-nav-item2 icon-hover"
-          to="/history"
+          to="/notifications"
         >
           <AiOutlineNotification className="bottom-nav-icon" />
         </NavLink>

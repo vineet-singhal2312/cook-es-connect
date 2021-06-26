@@ -11,7 +11,7 @@ const initialState = {
 export const addPost = createAsyncThunk(
   "posts/addPostToServer",
   async ({ token, postTitle, postCaption, imageUrl }) => {
-    console.log(token, postTitle, postCaption);
+    // console.log(token, postTitle, postCaption);
     const response = await axios.post(
       `http://localhost:8000/posts`,
       {
@@ -21,7 +21,7 @@ export const addPost = createAsyncThunk(
       },
       { headers: { authorization: token } }
     );
-    console.log(response);
+    // console.log(response);
     return response.data.results;
   }
 );
@@ -32,7 +32,7 @@ export const fetchPosts = createAsyncThunk(
     const response = await axios.get(`http://localhost:8000/posts`, {
       headers: { authorization: token },
     });
-    console.log(response.data.results);
+    // console.log(response.data.results);
     return response.data.results;
   }
 );
@@ -40,7 +40,7 @@ export const fetchPosts = createAsyncThunk(
 export const addReactionOnPost = createAsyncThunk(
   "posts/addReactionOnPost",
   async ({ token, postId, routeName }) => {
-    console.log(token, postId, routeName);
+    // console.log(token, postId, routeName);
     const response = await axios.post(
       `http://localhost:8000/posts/${routeName}`,
       {
@@ -48,7 +48,7 @@ export const addReactionOnPost = createAsyncThunk(
       },
       { headers: { authorization: token } }
     );
-    console.log(response);
+    // console.log(response);
     return response.data.results;
   }
 );
@@ -56,7 +56,7 @@ export const addReactionOnPost = createAsyncThunk(
 export const deleteReactionFromPost = createAsyncThunk(
   "posts/deleteReactionFromPost",
   async ({ token, postId, routeName }) => {
-    console.log(token, postId, routeName);
+    // console.log(token, postId, routeName);
     const response = await axios.delete(
       `http://localhost:8000/posts/${routeName}`,
       {
@@ -66,7 +66,7 @@ export const deleteReactionFromPost = createAsyncThunk(
         headers: { authorization: token },
       }
     );
-    console.log(response);
+    // console.log(response);
     return response.data.results;
   }
 );
@@ -74,13 +74,32 @@ export const deleteReactionFromPost = createAsyncThunk(
 export const addCommentOnPost = createAsyncThunk(
   "posts/addCommentOnPost",
   async ({ token, postId, userComment }) => {
-    console.log(token, userComment);
+    // console.log(token, userComment);
     const response = await axios.post(
       `http://localhost:8000/posts/comments`,
       { postId, userComment },
       { headers: { authorization: token } }
     );
-    console.log(response);
+    // console.log(response);
+    return response.data.results;
+  }
+);
+export const deleteCommentFromPost = createAsyncThunk(
+  "posts/deleteCommentFromPost",
+  async ({ token, postId, commentId }) => {
+    console.log(token, postId);
+    const response = await axios.delete(
+      `http://localhost:8000/posts/comments`,
+
+      {
+        data: {
+          postId,
+          commentId,
+        },
+        headers: { authorization: token },
+      }
+    );
+    // console.log(response);
     return response.data.results;
   }
 );
@@ -90,7 +109,7 @@ export const postsSlice = createSlice({
   initialState,
   reducers: {
     CommentBoxButtonPressed: (state, action) => {
-      console.log(action);
+      // console.log(action);
       return {
         ...state,
         isCommentBox: !state.isCommentBox,
@@ -104,7 +123,7 @@ export const postsSlice = createSlice({
       state.status = "loading";
     },
     [fetchPosts.fulfilled]: (state, action) => {
-      console.log(action);
+      // console.log(action);
       state.status = "fulfilled";
       state.posts = action.payload;
     },
@@ -113,27 +132,32 @@ export const postsSlice = createSlice({
       state.error = action.error.message;
     },
     [addPost.fulfilled]: (state, action) => {
-      console.log(action);
+      // console.log(action);
       state.status = "fulfilled";
       state.posts = action.payload;
     },
     [addReactionOnPost.fulfilled]: (state, action) => {
-      console.log(action);
+      // console.log(action);
       state.status = "fulfilled";
       state.posts = action.payload;
     },
     [deleteReactionFromPost.fulfilled]: (state, action) => {
-      console.log(action);
+      // console.log(action);
       state.status = "fulfilled";
       state.posts = action.payload;
     },
     [deleteReactionFromPost.fulfilled]: (state, action) => {
-      console.log(action);
+      // console.log(action);
+      state.status = "fulfilled";
+      state.posts = action.payload;
+    },
+    [deleteCommentFromPost.fulfilled]: (state, action) => {
+      // console.log(action);
       state.status = "fulfilled";
       state.posts = action.payload;
     },
     [addCommentOnPost.fulfilled]: (state, action) => {
-      console.log(action);
+      // console.log(action);
       state.status = "fulfilled";
       state.posts = action.payload;
     },

@@ -6,20 +6,27 @@ import { GrEdit } from "react-icons/gr";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { uploadTimeLinePhoto } from "../../utils/Profile.utiles";
-import { ProfileEditModal } from "./ProfileEditModal";
-import { EditProfileButtonPressed } from "../../features/profileSlice";
+import {
+  followProfile,
+  UnFollowProfile,
+} from "../../features/searchedProfileSlice";
+// import { ProfileEditModal } from "./ProfileEditModal";
+// import { EditProfileButtonPressed } from "../../features/profileSlice";
 
-export const ProfilePictureCard = ({ profileData }) => {
+export const SearchedUserProfilePictureCard = ({ profileData }) => {
   const { isEditProfile } = useSelector((state) => state.profile);
   const [selectedImage, setSelectedImage] = useState("");
   const dispatch = useDispatch();
-  const { token } = useSelector((state) => state.login);
-
+  const { token, currentUserId } = useSelector((state) => state.login);
+  const searchedUserId = profileData._id;
   console.log(profileData);
+
+  const isFollow = profileData.followers?.includes(currentUserId);
+  console.log(isFollow);
   return (
     <>
       <div className="profile-picture-card relative flex flex-col justify-between">
-        {isEditProfile && <ProfileEditModal />}
+        {/* {isEditProfile && <ProfileEditModal />} */}
 
         <img
           src={profileData.timeLinePhoto}
@@ -32,11 +39,12 @@ export const ProfilePictureCard = ({ profileData }) => {
           src={profileData.profilePictureImageUrl}
           className="profile-avtar  absolute top-48 left-4 md:top-40 md:left-16 md:w-40 md:h-40 w-24 h-24 rounded-full"
         />
+
         <div className="h-1/5 md:p-4 relative flex items-center justify-between">
           <h1 className="user-name-profile grid place-items-center absolute -top-8 md:relative md:-top-1 md:left-0 left-28 md:ml-8 text-sm font-semibold md:text-2xl md:w-1/4 capitalize">
             {profileData.userName}
           </h1>
-          {selectedImage ? (
+          {/* {selectedImage ? (
             <label
               className="fileContainer flex absolute cursor-pointer bottom-32 right-2 w-1/10 md:bottom-24 md:right-4 md:p-8"
               onClick={() =>
@@ -66,34 +74,50 @@ export const ProfilePictureCard = ({ profileData }) => {
                 onChange={(e) => setSelectedImage(e.target.files[0])}
               />
             </label>
-          )}
+          )} */}
           {/* </div> */}
 
           <div className="w-full  md:w-4/5 h-4/5 md:font-semibold flex justify-center items-center md:justify-between mx-2 my-4 md:m-0">
             <div className="follower-following-div flex w-3/4 md:w-1/2  ">
               <div className="follower w-1/2 0  md:grid md:place-items-center">
                 {" "}
-                0 follower
+                {profileData.followers?.length} follower
               </div>
               <div className="following w-1/2   md:grid md:place-items-center">
-                {profileData.following?.length} following
+                0 following
               </div>
             </div>
-            {/* <button className="follow-btn bg-button-gradient h-full grid place-items-center rounded-lg w-1/5  ">
-              follow
-            </button> */}
-            <button
+            {isFollow ? (
+              <button
+                className="follow-btn bg-button-gradient h-4/5 md:h-full grid place-items-center rounded-lg md:w-1/5 w-1/3 "
+                onClick={() =>
+                  dispatch(UnFollowProfile({ token, searchedUserId }))
+                }
+              >
+                Unfollow
+              </button>
+            ) : (
+              <button
+                className="follow-btn bg-button-gradient h-4/5 md:h-full grid place-items-center rounded-lg md:w-1/5 w-1/3 "
+                onClick={() =>
+                  dispatch(followProfile({ token, searchedUserId }))
+                }
+              >
+                follow
+              </button>
+            )}
+            {/* <button
               className="hidden md:block edit-profile-btn bg-button-gradient text-sm md:text-base h-full grid place-items-center rounded-lg md:w-1/5 w-1/4 "
               onClick={() => dispatch(EditProfileButtonPressed())}
             >
               Edit profile
             </button>
             <button
-              className="md:hidden edit-profile-btn absolute -top-8 left-48 bg-button-gradient text-sm md:text-base h-6 grid place-items-center rounded-full  w-6 "
+              className="md:hhidden edit-profile-btn absolute -top-8 left-48 bg-button-gradient text-sm md:text-base h-6 grid place-items-center rounded-full  w-6 "
               onClick={() => dispatch(EditProfileButtonPressed())}
             >
               <GrEdit />
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { FeedCard } from "../../components/feedCard/FeedCard";
+import { PostCard } from "../../components/PostCard/PostCard";
 import { fetchPosts } from "../../features/postsSlice";
 
 export const FeedPosts = () => {
@@ -17,7 +17,7 @@ export const FeedPosts = () => {
   return (
     <div className="grid place-items-center mb-32">
       {posts.map((post) => (
-        <FeedCard post={post} />
+        <PostCard post={post} />
       ))}
     </div>
   );

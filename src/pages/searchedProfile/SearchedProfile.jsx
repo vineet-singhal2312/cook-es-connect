@@ -6,27 +6,35 @@ import { ProfilePictureCard } from "../../components/profilePictureCard/ProfileP
 import { useDispatch, useSelector } from "react-redux";
 import { PostCard } from "../../components/PostCard/PostCard";
 import { fetchPosts } from "../../features/postsSlice";
+import { useParams } from "react-router-dom";
+
 import {
   fetchProfileData,
   getPostsForProfile,
 } from "../../features/profileSlice";
-export const Profile = () => {
-  const { token, currentUserId } = useSelector((state) => state.login);
-  // const searchedUserProfile = useSelector((state) => state.searchedUserProfile);
-
-  // const [wantedDataForUserId, setwantedDataForUserId] = useState(currentUserId);
+import {
+  fetchSearchedUserProfileData,
+  fetchUserProfileData,
+  getPostsOfSearchedUser,
+} from "../../features/searchedProfileSlice";
+import { SearchedUserProfilePictureCard } from "./SearchedUserProfilePictureCard";
+export const SearchedProfile = () => {
+  const { token } = useSelector((state) => state.login);
+  const { searchedUserId } = useParams();
+  console.log(searchedUserId);
   const dispatch = useDispatch();
-  const post = useSelector((state) => state.post);
-  const { status, profileData, posts } = useSelector((state) => state.profile);
-  // console.log(wantedDataForUserId);
-  // console.log(searchedUserProfile.status);
+
+  const { status, searchedUserProfileData, searchedUserPosts } = useSelector(
+    (state) => state.searchedUserProfile
+  );
   useEffect(async () => {
     console.log("pehle ye");
-    if (status === "idle") {
-      await dispatch(fetchProfileData(token));
-      await dispatch(getPostsForProfile(token));
-    }
-  }, [dispatch, status, post.status]);
+    // if (status === "idle") {
+    await dispatch(fetchSearchedUserProfileData({ token, searchedUserId }));
+    await dispatch(getPostsOfSearchedUser({ token, searchedUserId }));
+    // }
+  }, [dispatch, searchedUserId]);
+  console.log(searchedUserProfileData);
   return (
     <>
       {/* // <div className="w-full min-h-screen"> */}
@@ -34,12 +42,14 @@ export const Profile = () => {
       <BottomNav />
       <div className="profile sm:container md:mx-auto md:px-20  h-screen flex flex-col items-center">
         <div className="profile-content flex flex-col md:w-4/5 w-full  mt-12 items-center  pt-4  overflow-x-auto">
-          <ProfilePictureCard profileData={profileData} />
+          <SearchedUserProfilePictureCard
+            profileData={searchedUserProfileData}
+          />
 
           {/* <ProfileInfo /> */}
 
           <div className="grid place-items-center mt-2 w-full mb-32">
-            {posts.map((post) => (
+            {searchedUserPosts.map((post) => (
               <PostCard post={post} />
             ))}
           </div>

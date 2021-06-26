@@ -43,9 +43,9 @@
   background-image: linear-gradient(315deg, #f3e6e8 0%, #d5d0e5 74%);
 }
 
-.fileContainer {
+/* .fileContainer {
   position: relative;
-}
+} */
 
 .fileContainer [type="file"] {
   cursor: inherit;
@@ -71,7 +71,7 @@
   -webkit-backdrop-filter: blur(0.5px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 0.5em 2em;
+  padding: 0.5em 0.5em;
   font-size: 1rem;
 }
 .fileContainer:hover {

@@ -11,7 +11,9 @@ export const LogIn = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isUserLoggedIn } = useSelector((state) => state.login);
-  console.log(isUserLoggedIn);
+  // const loginstate = useSelector((state) => state.login);
+
+  // console.log(loginstate);
   //   console.log(password);
 
   return (

@@ -3,15 +3,15 @@ import Avatar from "@material-ui/core/Avatar";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { addReactionOnPost } from "../../features/postsSlice";
-import { FeedCardReactionBar } from "./FeedCardReactionBar";
-import { FeedCardCommentBar } from "./FeedCardCommentBar";
+import { PostCardReactionBar } from "./PostCardReactionBar";
+import { PostCardCommentBar } from "./PostCardCommentBar";
 
-export const FeedCard = ({ post }) => {
+export const PostCard = ({ post }) => {
   const dispatch = useDispatch();
   const postId = post._id;
   const { token } = useSelector((state) => state.login);
-  console.log(token);
-  console.log(post);
+  // console.log(token);
+  // console.log(post);
 
   // console.log(post.likes.map((user) => user._id).includes(post.userId._id));
 
@@ -22,17 +22,17 @@ export const FeedCard = ({ post }) => {
   //   )
   // );
   return (
-    <div className="feed-card border border-gray-200 m-1  flex-col">
+    <div className="feed-card border border-gray-200 m-2 rounded  flex-col">
       <div className="feed-card-user flex justify-between p-2 ">
         <div className="feed-card-top flex items-center cursor-pointer">
           <Avatar
             alt="Remy Sharp"
-            src={post.userId.profilePictureImageUrl}
+            src={post.userId?.profilePictureImageUrl}
             id="feed-card-avtar"
           />
           <div className="feed-card-user-name-div flex flex-col items-start ml-4">
             <h1 className="feed-card-user-name capitalize text-lg">
-              {post.userId.userName}
+              {post.userId?.userName}
             </h1>
             <small>{post.date}</small>
           </div>
@@ -60,8 +60,8 @@ export const FeedCard = ({ post }) => {
         </div>
       </div>
       <div className="feed-card-bottom flex flex-col ">
-        <FeedCardReactionBar post={post} />
-        <FeedCardCommentBar post={post} />
+        <PostCardReactionBar post={post} />
+        <PostCardCommentBar post={post} />
       </div>
     </div>
   );
