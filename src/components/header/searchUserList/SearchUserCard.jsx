@@ -1,5 +1,4 @@
 import React from "react";
-import Avatar from "@material-ui/core/Avatar";
 import { useNavigate } from "react-router-dom";
 
 export const SearchUserCard = ({ user, setIsSearch }) => {
@@ -13,10 +12,10 @@ export const SearchUserCard = ({ user, setIsSearch }) => {
         setIsSearch(false);
       }}
     >
-      <Avatar
+      <img
         alt="Remy Sharp"
         src={user.profilePictureImageUrl}
-        id="feed-card-avtar"
+        className="s-avtar rounded-full"
       />
       <p className="ml-4">{user.userName}</p>
     </div>

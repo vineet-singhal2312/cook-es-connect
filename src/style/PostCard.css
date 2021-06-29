@@ -1,30 +1,19 @@
-.feed-card {
+.post-card {
   width: 80%;
-
-  background: var(--card-background-color);
-  backdrop-filter: blur(0.5px);
-  -webkit-backdrop-filter: blur(0.5px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
 }
-#feed-card-avtar {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-}
-.feed-card-user {
+.post-card-user {
   min-height: 75px;
 }
-
-.feed-card-middle {
+.post-card-middle {
   min-height: 225px;
 }
-.feed-card-bottom {
+.post-card-bottom {
   min-height: 125px;
 }
-.feed-card-reaction-bar {
+.post-card-reaction-bar {
   min-height: 50px;
 }
-.feed-card-comment-bar {
+.post-card-comment-bar {
   min-height: 75px;
 }
 .reaction-count-bar {
@@ -33,25 +22,13 @@
 .comment-box {
   min-height: 50px;
 }
-.comment-input {
-  background: var(--card-background-color);
-  /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
-  backdrop-filter: blur(0.5px);
-  -webkit-backdrop-filter: blur(0.5px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-}
-.feed-card-content-div {
+
+.post-card-content-div {
   word-wrap: break-word;
   white-space: pre-line;
 }
-.feed-card-content {
+.post-card-content {
   word-wrap: break-word;
-}
-
-.add-comment-btn {
-  background-color: #f3e6e8;
-  background-image: linear-gradient(315deg, #f3e6e8 0%, #d5d0e5 74%);
 }
 
 .like-dislike-button:hover {
@@ -62,31 +39,18 @@
   width: 650px;
   top: 25%;
   left: 29%;
-  /* border: 1px solid rgba(255, 255, 255, 0.18); */
-  background-color: #f3e6e8;
-  background-image: linear-gradient(315deg, #f3e6e8 0%, #d5d0e5 74%);
 }
 
 .comments {
   height: 330px;
 }
-.comments::-webkit-scrollbar {
-  display: none;
-}
-.comment-input-comments-box {
-  /* background: var(--card-background-color);
-  backdrop-filter: blur(0.5px);
-  -webkit-backdrop-filter: blur(0.5px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.18); */
-}
+
 @media only screen and (max-width: 500px) {
   .post-comments-box {
     height: 325px;
     width: 325px;
     top: 25%;
     left: 5%;
-    /* border: 1px solid rgba(255, 255, 255, 0.18); */
     background-color: #f3e6e8;
     background-image: linear-gradient(315deg, #f3e6e8 0%, #d5d0e5 74%);
   }

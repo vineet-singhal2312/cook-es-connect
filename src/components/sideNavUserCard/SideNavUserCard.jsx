@@ -7,7 +7,7 @@ export const SideNavUserCard = () => {
       <Avatar
         alt="Remy Sharp"
         src="/static/images/avatar/1.jpg"
-        id="feed-card-avtar"
+        id="post-card-avtar"
       />
       <p className="ml-4">vineet singhal</p>
     </div>

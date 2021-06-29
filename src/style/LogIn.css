@@ -42,71 +42,13 @@
   color: black;
 }
 
-/* label,
-input,
-textarea {
-  display: block;
-  width: 100%;
-  font-size: 1rem;
-  line-height: 2rem;
-  font-family: "Spartan";
-  outline: none;
-} */
-
-/* input {
-} */
-
-/* h3 {
-  font-weight: normal;
-  font-size: 1rem;
-  line-height: 2rem;
-  font-style: italic;
-  margin: 0 0 0.5em 0;
-} */
-
-/* span {
-  font-size: 0.5rem;
-} */
-
-/* em {
-  color: #f45702;
-  font-weight: bold;
-} */
-/* 
-input,
-textarea {
-  border: none;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 2px;
-  background: var(--textColor);
-  padding-left: 5px;
-  outline: none;
-} */
-
-/* input:focus,
-  textarea:focus {
-    border: 1px solid #6bd4b1;
-  } */
-
-/* textarea {
-  resize: none;
-} */
-/* .login-signup-button-div {
-    display: flex;
-    
-  } */
-
 .log-in-button {
-  /* height: 30px;
-  width: 130px; */
   margin: 0rem 0.3rem;
 
   display: block;
   float: right;
-  /* line-height: 2rem; */
   padding: 0.25rem 3rem;
   border: none;
-  /* background: var(--secondaryColor); */
   letter-spacing: 2px;
   transition: 0.2s all ease-in-out;
   border-bottom: 2px solid transparent;
@@ -116,7 +58,6 @@ textarea {
   color: var(--secondaryColor);
   border-radius: 10px;
 
-  /* border-bottom: 2px solid var(--secondaryColor); */
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 .log-in-button:hover {

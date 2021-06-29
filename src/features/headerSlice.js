@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 export const headerSlice = createSlice({
   name: "header",
@@ -7,8 +7,6 @@ export const headerSlice = createSlice({
   },
   reducers: {
     hamburgerButtonClicked: (state, action) => {
-      // console.log(current(state), action);
-
       return {
         ...state,
         isHamburgerMenu: !state.isHamburgerMenu,

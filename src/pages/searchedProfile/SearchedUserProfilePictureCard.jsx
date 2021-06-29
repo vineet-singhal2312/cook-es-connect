@@ -1,46 +1,21 @@
-import React, { useEffect, useState } from "react";
-import Avatar from "@material-ui/core/Avatar";
-import { TiTick } from "react-icons/ti";
-import { GrEdit } from "react-icons/gr";
+import React from "react";
 
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { uploadTimeLinePhoto } from "../../utils/Profile.utiles";
 import {
   fetchSearchedUserProfileData,
   followProfile,
-  getPostsOfSearchedUser,
   UnFollowProfile,
 } from "../../features/searchedProfileSlice";
 import { fetchProfileData } from "../../features/profileSlice";
-// import { ProfileEditModal } from "./ProfileEditModal";
-// import { EditProfileButtonPressed } from "../../features/profileSlice";
-
 export const SearchedUserProfilePictureCard = ({ profileData }) => {
-  const { isEditProfile } = useSelector((state) => state.profile);
-  const [selectedImage, setSelectedImage] = useState("");
   const dispatch = useDispatch();
   const { token, currentUserId } = useSelector((state) => state.login);
   const searchedUserId = profileData._id;
-  console.log(profileData);
-  const { status, searchedUserProfileData, searchedUserPosts } = useSelector(
-    (state) => state.searchedUserProfile
-  );
   const isFollow = profileData.followers?.includes(currentUserId);
-  console.log(isFollow);
-  // useEffect(async () => {
-  //   console.log("pehle ye");
-  //   if (status === "idle") {
-  //     await dispatch(fetchSearchedUserProfileData({ token, searchedUserId }));
-  //     await dispatch(getPostsOfSearchedUser({ token, searchedUserId }));
-  //   }
-  // }, [dispatch, status]);
 
   return (
     <>
-      <div className="profile-picture-card relative flex flex-col justify-between">
-        {/* {isEditProfile && <ProfileEditModal />} */}
-
+      <div className="searched-profile-picture-card background-0 rounded-lg w-full h-400px  relative flex flex-col justify-between">
         <img
           src={profileData.timeLinePhoto}
           alt="Girl in a jacket"
@@ -50,7 +25,7 @@ export const SearchedUserProfilePictureCard = ({ profileData }) => {
         <img
           alt="Remy Sharp"
           src={profileData.profilePictureImageUrl}
-          className="profile-avtar  absolute top-48 left-4 md:top-40 md:left-16 md:w-40 md:h-40 w-24 h-24 rounded-full"
+          className="searched-profile-avtar  absolute top-52 left-4 md:top-40 md:left-16 md:w-40 md:h-40 w-24 h-24 rounded-full"
         />
 
         <div className="h-1/5 md:p-4 relative flex items-center justify-between">
@@ -92,18 +67,6 @@ export const SearchedUserProfilePictureCard = ({ profileData }) => {
                 follow
               </button>
             )}
-            {/* <button
-              className="hidden md:block edit-profile-btn bg-button-gradient text-sm md:text-base h-full grid place-items-center rounded-lg md:w-1/5 w-1/4 "
-              onClick={() => dispatch(EditProfileButtonPressed())}
-            >
-              Edit profile
-            </button>
-            <button
-              className="md:hhidden edit-profile-btn absolute -top-8 left-48 bg-button-gradient text-sm md:text-base h-6 grid place-items-center rounded-full  w-6 "
-              onClick={() => dispatch(EditProfileButtonPressed())}
-            >
-              <GrEdit />
-            </button> */}
           </div>
         </div>
       </div>

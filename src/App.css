@@ -2,12 +2,11 @@
 @import "./style/PostCard.css";
 @import "./style/Feed.css";
 @import "./style/BottomNav.css";
-@import "./style/CreatPost.css";
-@import "./style/FeedProfileCard.css";
 @import "./style/Profile.css";
 @import "./style/SignUp.css";
 @import "./style/LogIn.css";
 @import "./style/Notification.css";
+@import "./style/InstructionModal.css";
 
 * {
   padding: 0;
@@ -54,10 +53,54 @@ input:focus {
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
 }
-#l-avtar-card-avtar {
+.s-avtar {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.l-avtar {
   width: 75px;
   height: 75px;
   cursor: pointer;
+}
+.xl-avtar {
+  width: 150px;
+  height: 150px;
+  cursor: pointer;
+}
+.background-0 {
+  background: var(--card-background-color);
+  backdrop-filter: blur(0.5px);
+  -webkit-backdrop-filter: blur(0.5px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.background-1 {
+  background: var(--card-background-color);
+
+  box-shadow: 0 8px 12px 0 rgba(255, 255, 255, 0.8);
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.background-2 {
+  background: var(--card-background-color);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.background-btn-1 {
+  background-color: #f3e6e8;
+  background-image: linear-gradient(315deg, #f3e6e8 0%, #d5d0e5 74%);
+}
+.shadow-1 {
+  box-shadow: 0 1px 8px 0 rgba(255, 255, 255, 0.37);
+}
+.min-h-100px {
+  min-height: 100px;
+}
+.h-400px {
+  height: 400px;
 }
 .w90 {
   width: 90%;

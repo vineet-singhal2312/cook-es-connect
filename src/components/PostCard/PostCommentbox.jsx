@@ -8,7 +8,6 @@ import {
   CommentBoxButtonPressed,
   deleteCommentFromPost,
 } from "../../features/postsSlice";
-import { PostCardCommentBar } from "./PostCardCommentBar";
 
 export const PostCommentBox = () => {
   const [userComment, setUserComment] = useState("");
@@ -30,7 +29,7 @@ export const PostCommentBox = () => {
   console.log(currentUserId);
 
   return (
-    <div className=" post-comments-box fixed flex flex-col justify-between rounded-lg z-40 text-brand-secondaryText">
+    <div className=" post-comments-box background-btn-1 fixed flex flex-col justify-between rounded-lg z-40 text-brand-secondaryText">
       <div
         className="absolute top-0 right-0 text-3xl cursor-pointer"
         onClick={() => dispatch(CommentBoxButtonPressed())}
@@ -38,7 +37,7 @@ export const PostCommentBox = () => {
         <AiFillCloseCircle />
       </div>
 
-      <div className="comments overflow-y-scroll ">
+      <div className="comments scrollbar-hidden overflow-y-scroll ">
         {post.comments.map((commentInfo) => (
           <div className="single-comment-box border-brand-secondaryBorder flex  border-b p-4 text-left">
             <div className="w-4/5">

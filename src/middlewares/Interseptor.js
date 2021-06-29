@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 import axios from "axios";
+import { axiosFailed } from "../features/alertSlice";
+import { useDispatch } from "react-redux";
 // import { useAuth } from "../providers/AuthProvider";
 
 function Interceptor() {
   //   const { setIsAxiosFullfil } = useAuth();
+  const dispatch = useDispatch();
 
   const addErrorInterceptor = () => {
     axios.interceptors.response.use(
@@ -30,10 +33,11 @@ function Interceptor() {
           }
           if (code === 400) {
             console.log("Please fill correct information!!");
-            //   setIsAxiosFullfil(true);
-            //   setTimeout(() => {
-            //     setIsAxiosFullfil(false);
-            //   }, 5000);
+            dispatch(axiosFailed());
+
+            setTimeout(() => {
+              dispatch(axiosFailed());
+            }, 5000);
           }
 
           if (code === 404) {

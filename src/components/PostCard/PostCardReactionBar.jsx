@@ -1,8 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FaRegLaughSquint } from "react-icons/fa";
+import { FaLaughSquint } from "react-icons/fa";
+
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiOutlineLike } from "react-icons/ai";
+import { AiFillDislike } from "react-icons/ai";
+import { AiFillLike } from "react-icons/ai";
 
 import { AiOutlineDislike } from "react-icons/ai";
 
@@ -19,37 +23,27 @@ export const PostCardReactionBar = ({ post }) => {
   const isReactionOnPost = (userIdArrayOnReaction, currentUserId) => {
     return userIdArrayOnReaction.includes(currentUserId);
   };
-  console.log({ post });
-  // console.log(post.hearts.map((user) => user._id));
-  // console.log(currentUserId);
-  // console.log(isReactionOnPost);
-  // console.log(
-  //   isReactionOnPost(
-  //     post.hearts.map((user) => user._id),
-  //     currentUserId
-  //   )
-  // );
 
   return (
     <>
-      <div className="feed-card-reaction-bar p-2 flex ">
+      <div className="post-card-reaction-bar p-2 flex text-brand-primaryText">
         {isReactionOnPost(
           post.likes.map((user) => user._id),
           currentUserId
         ) ? (
           <button
-            className="like-dislike-button w-1/5  "
+            className="like-dislike-button hover:text-lg w-1/5  grid place-items-center "
             onClick={() =>
               dispatch(
                 deleteReactionFromPost({ token, postId, routeName: "likes" })
               )
             }
           >
-            👍
+            <AiFillLike />
           </button>
         ) : (
           <button
-            className="like-dislike-button w-1/5 grid place-items-center"
+            className="like-dislike-button w-1/5 grid place-items-center "
             onClick={() =>
               dispatch(addReactionOnPost({ token, postId, routeName: "likes" }))
             }
@@ -70,7 +64,7 @@ export const PostCardReactionBar = ({ post }) => {
               )
             }
           >
-            👎
+            <AiFillDislike />
           </button>
         ) : (
           <button
@@ -149,7 +143,7 @@ export const PostCardReactionBar = ({ post }) => {
               )
             }
           >
-            😆
+            <FaLaughSquint />
           </button>
         ) : (
           <button

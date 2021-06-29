@@ -5,29 +5,16 @@
   position: fixed;
   bottom: 0%;
   right: 20%;
-  /* top: 17%; */
   height: 15vh;
   width: 60vw;
 
-  background: var(--card-background-color);
-  /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.8);
-   */
-  box-shadow: 0 8px 12px 0 rgba(255, 255, 255, 0.8);
-
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-
   border-top-right-radius: 100%;
   border-top-left-radius: 100%;
-  z-index: 1;
+  /* z-index: 1; */
   transition: all 0.5s;
   overflow-x: hidden;
 }
 .bottom-nav:hover {
-  /* border: 1px solid rgba(255, 255, 255, 0.18); */
-  /* box-shadow: 0 32px 64px 0 rgba(17, 139, 211, 0.6);
-   */
-
   box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.6);
 }
 .bottom-nav-item1 {
@@ -63,10 +50,4 @@
   transform: scale(1.5);
   transition: all 0.5s;
   cursor: pointer;
-}
-
-@media only screen and (max-width: 500px) {
-  .bottom-nav-icon {
-    font-size: 1.5rem;
-  }
 }

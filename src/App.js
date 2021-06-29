@@ -1,8 +1,6 @@
 import React from "react";
 
 import "./App.css";
-import { Header } from "./components/header/Header";
-import { BottomNav } from "./components/bottomNav/BottomNav";
 import { Feed } from "./pages/feed/Feed";
 import { Routes, Route } from "react-router-dom";
 import { Profile } from "./pages/profile/Profile";
@@ -15,10 +13,8 @@ import { Notifications } from "./pages/notification/Notifications";
 
 function App() {
   const { isDarkModeEnable } = useSelector((state) => {
-    // console.log({ state });
     return state.dark;
   });
-  // console.log(isDarkModeEnable);
 
   return (
     <div className={isDarkModeEnable ? "dark-theme" : "light-theme"}>
@@ -28,7 +24,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/users/:searchedUserId" element={<SearchedProfile />} />
 
-        <Route path="/logout" element={<SignUp />} />
+        <Route path="/sign-up" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="/notifications" element={<Notifications />} />
 

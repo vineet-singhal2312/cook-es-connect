@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
@@ -12,11 +12,9 @@ const initialState = {
 export const fetchProfileData = createAsyncThunk(
   "profile/fetchProfileData",
   async (token) => {
-    console.log(token);
     const response = await axios.get(`http://localhost:8000/profile`, {
       headers: { authorization: token },
     });
-    console.log(response.data.result[0]);
     return response.data.result[0];
   }
 );
@@ -26,7 +24,6 @@ export const fetchAllUsers = createAsyncThunk(
     const response = await axios.get(`http://localhost:8000/profile/users`, {
       headers: { authorization: token },
     });
-    console.log(response.data.results);
     return response.data.results;
   }
 );
@@ -37,7 +34,6 @@ export const getPostsForProfile = createAsyncThunk(
     const response = await axios.get(`http://localhost:8000/profile/posts`, {
       headers: { authorization: token },
     });
-    console.log(response.data.results);
     return response.data.results;
   }
 );
@@ -45,7 +41,6 @@ export const getPostsForProfile = createAsyncThunk(
 export const addTimeLinePhoto = createAsyncThunk(
   "profile/addTimeLinePhoto",
   async ({ token, timelineImageUrl }) => {
-    // console.log(token, postTitle, postCaption);
     const response = await axios.post(
       `http://localhost:8000/profile/timeline`,
       {
@@ -53,7 +48,6 @@ export const addTimeLinePhoto = createAsyncThunk(
       },
       { headers: { authorization: token } }
     );
-    console.log(response);
     return response.data.result[0];
   }
 );
@@ -69,7 +63,6 @@ export const updateUserInfo = createAsyncThunk(
       },
       { headers: { authorization: token } }
     );
-    console.log(response);
     return response.data.result[0];
   }
 );
@@ -78,8 +71,6 @@ export const profileSlice = createSlice({
   initialState,
   reducers: {
     EditProfileButtonPressed: (state, action) => {
-      // console.log(action);
-
       return {
         ...state,
         isEditProfile: !state.isEditProfile,

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
@@ -9,30 +9,16 @@ const initialState = {
 export const getNotifications = createAsyncThunk(
   "notification/getNotifications",
   async (token) => {
-    // console.log(email, password);
     const response = await axios.get(`http://localhost:8000/notifications`, {
       headers: { authorization: token },
     });
-    console.log(response);
-
     return response.data.results;
   }
 );
 export const notificationSlice = createSlice({
   name: "notification",
   initialState,
-  reducers: {
-    // userPressedLogout: (state) => {
-    //   return {
-    //     ...state,
-    //     token: null,
-    //     isUserLoggedIn: false,
-    //     name: null,
-    //     profilePicture: null,
-    //     currentUserId: null,
-    //   };
-    // },
-  },
+  reducers: {},
   extraReducers: {
     [getNotifications.fulfilled]: (state, action) => {
       state.status = "fulfilled";
@@ -43,6 +29,6 @@ export const notificationSlice = createSlice({
     },
   },
 });
-export const { userPressedLogout } = notificationSlice.actions;
+export const {} = notificationSlice.actions;
 
 export default notificationSlice.reducer;

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = JSON.parse(localStorage?.getItem("login")) || {
@@ -11,13 +11,11 @@ const initialState = JSON.parse(localStorage?.getItem("login")) || {
 
 export const userLogin = createAsyncThunk(
   "login/userLogin",
-  async ({ email, password }) => {
-    console.log(email, password);
+  async ({ email, password, navigate }) => {
     const response = await axios.post(`http://localhost:8000/login`, {
       email,
       password,
     });
-    console.log(response);
     localStorage?.setItem(
       "login",
       JSON.stringify({
@@ -28,6 +26,7 @@ export const userLogin = createAsyncThunk(
         currentUserId: response.data.id,
       })
     );
+    navigate("/");
 
     return response.data;
   }
@@ -49,7 +48,6 @@ export const loginSlice = createSlice({
   },
   extraReducers: {
     [userLogin.fulfilled]: (state, action) => {
-      console.log(action);
       state.token = action.payload.token;
       state.isUserLoggedIn = true;
       state.name = action.payload.userName;

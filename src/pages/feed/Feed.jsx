@@ -8,36 +8,31 @@ import { FeedProfileCard } from "./FeedProfileCard";
 import { Header } from "../../components/header/Header";
 import { fetchPosts } from "../../features/postsSlice";
 import Interceptor from "../../middlewares/Interseptor";
-import loginSlice from "../../features/loginSlice";
 import { FeedPosts } from "./FeedPosts";
+import { InstructionModal } from "../../components/InstructionsModal/InstructionModal";
 
 export const Feed = () => {
-  // useEffect(() => {}, []);
   const { token } = useSelector((state) => state.login);
-
-  const { posts, status, error, isCommentBox } = useSelector(
-    (state) => state.post
-  );
+  const { isAxios } = useSelector((state) => state.alert);
+  const { status, isCommentBox } = useSelector((state) => state.post);
 
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log("pehle ye");
     if (status === "idle") {
       dispatch(fetchPosts(token));
     }
-  }, [dispatch, status]);
-  console.log(token);
+  }, [dispatch, status, token]);
   return (
     <>
-      {/* <Interceptor /> */}
+      <Interceptor />
       <Header />
       <BottomNav />
+      {isAxios && <InstructionModal info="Check all fields or try again!!" />}
 
       {isCommentBox && <PostCommentBox />}
-      {/* {status === "loading" && <div>Loading...</div>}
-      {status === "error" && <div>Error...{error}</div>} */}
+      {/* {status === "loading" && <div>Loading...</div>} */}
       <div className="feed-outer-div sm:container md:mx-auto md:px-20 h-screen flex flex-col items-center">
-        <div className="profile-content flex flex-col mt-12  items-center  pt-4 h-full w-full overflow-x-auto">
+        <div className="profile-content flex flex-col mt-12  items-center  pt-4 h-full w-full overflow-x-auto scrollbar-hidden">
           <div className="flex justify-between w90">
             <FeedProfileCard />
             <CreatPost />

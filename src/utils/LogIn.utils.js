@@ -1,5 +1,4 @@
 import { userLogin, userPressedLogout } from "../features/loginSlice";
-import { ApiService } from "./ApiServirces";
 
 export const LogInHandler = async (
   e,
@@ -11,10 +10,7 @@ export const LogInHandler = async (
   dispatch
 ) => {
   e.preventDefault();
-  await dispatch(userLogin({ email, password }));
-
-  console.log("here again");
-  navigate("/");
+  await dispatch(userLogin({ email, password, navigate }));
 };
 export const LogOut = (dispatch) => {
   dispatch(userPressedLogout());

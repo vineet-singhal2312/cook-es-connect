@@ -4,19 +4,14 @@ import { SearchUserCard } from "./SearchUserCard";
 import { AiFillCloseCircle } from "react-icons/ai";
 
 export const SearchUserList = ({ userInput, setIsSearch }) => {
-  const { allUsers } = useSelector((state) => state.profile);
+  const { searchedUserList } = useSelector(
+    (state) => state.searchedUserProfile
+  );
 
-  // const searchedUserArr = () => {
-  const userNewArr = userInput
-    ? allUsers.filter((user) =>
-        user.userName.toLowerCase().includes(userInput.toLowerCase())
-      )
-    : allUsers;
-  //   };
-
+  console.log(searchedUserList);
   return (
-    <div className="search-user-list overflow-scroll z-50 absolute right-44 top-10 bg-white">
-      {userNewArr.map((user) => (
+    <div className="search-user-list scrollbar-hidden overflow-scroll z-50 absolute right-44 top-10 bg-white">
+      {searchedUserList.map((user) => (
         <SearchUserCard setIsSearch={setIsSearch} user={user} />
       ))}
       <div

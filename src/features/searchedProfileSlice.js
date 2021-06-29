@@ -1,11 +1,26 @@
-import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
   status: "idle",
   searchedUserProfileData: {},
   searchedUserPosts: [],
+  searchedUserList: [],
 };
+
+export const fetchSearchedUsersList = createAsyncThunk(
+  "searchedProfile/fetchSearchedUsersList",
+  async ({ token, searchedUserName }) => {
+    console.log(token, searchedUserName);
+    const response = await axios.get(
+      `http://localhost:8000/searched-profile/users/${searchedUserName}`,
+      {
+        headers: { authorization: token },
+      }
+    );
+    return response.data.results;
+  }
+);
 
 export const fetchSearchedUserProfileData = createAsyncThunk(
   "searchedProfile/fetchSearchedUserProfileData",
@@ -73,17 +88,16 @@ export const UnFollowProfile = createAsyncThunk(
 export const searchedProfileSlice = createSlice({
   name: "searched-profile",
   initialState,
-  reducers: {
-    // EditProfileButtonPressed: (state, action) => {
-    //   // console.log(action);
-    //   return {
-    //     ...state,
-    //     isEditProfile: !state.isEditProfile,
-    //   };
-    // },
-  },
+  reducers: {},
 
   extraReducers: {
+    [fetchSearchedUsersList.fulfilled]: (state, action) => {
+      state.status = "fulfilled";
+      state.searchedUserList = action.payload;
+    },
+    [fetchSearchedUsersList.pending]: (state) => {
+      state.status = "loading";
+    },
     [fetchSearchedUserProfileData.fulfilled]: (state, action) => {
       state.status = "fulfilled";
       state.searchedUserProfileData = action.payload;
@@ -115,6 +129,6 @@ export const searchedProfileSlice = createSlice({
   },
 });
 
-export const { EditProfileButtonPressed } = searchedProfileSlice.actions;
+export const {} = searchedProfileSlice.actions;
 
 export default searchedProfileSlice.reducer;

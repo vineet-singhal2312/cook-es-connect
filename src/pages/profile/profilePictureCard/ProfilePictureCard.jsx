@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import Avatar from "@material-ui/core/Avatar";
 import { TiTick } from "react-icons/ti";
 import { GrEdit } from "react-icons/gr";
-
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { uploadTimeLinePhoto } from "../../../utils/Profile.utiles";
 import { ProfileEditModal } from "./ProfileEditModal";
@@ -15,10 +12,9 @@ export const ProfilePictureCard = ({ profileData }) => {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.login);
 
-  console.log(profileData);
   return (
     <>
-      <div className="profile-picture-card relative flex flex-col justify-between">
+      <div className="profile-picture-card background-0 rounded-lg w-full h-400px relative flex flex-col justify-between">
         {isEditProfile && <ProfileEditModal />}
 
         <img
@@ -30,7 +26,7 @@ export const ProfilePictureCard = ({ profileData }) => {
         <img
           alt="Remy Sharp"
           src={profileData.profilePictureImageUrl}
-          className="profile-avtar  absolute top-48 left-4 md:top-40 md:left-16 md:w-40 md:h-40 w-24 h-24 rounded-full"
+          className="profile-avtar  absolute top-52 left-4 md:top-40 md:left-16 md:w-40 md:h-40 w-24 h-24 rounded-full"
         />
         <div className="h-1/5 md:p-4 relative flex items-center justify-between">
           <h1 className="user-name-profile grid place-items-center absolute -top-8 md:relative md:-top-1 md:left-0 left-28 md:ml-8 text-sm font-semibold md:text-2xl md:w-1/4 capitalize">
@@ -54,7 +50,7 @@ export const ProfilePictureCard = ({ profileData }) => {
               <p className="hidden md:block">Click for upload</p>
             </label>
           ) : (
-            <label class="fileContainer flex absolute cursor-pointer bottom-32 right-2 w-1/10 md:bottom-24 md:right-4 md:p-8">
+            <label className="fileContainer flex absolute cursor-pointer bottom-32 right-2 w-1/10 md:bottom-24 md:right-4 md:p-8">
               <div className="flex justify-center items-center md:mr-4">
                 <GrEdit />
               </div>
@@ -67,7 +63,6 @@ export const ProfilePictureCard = ({ profileData }) => {
               />
             </label>
           )}
-          {/* </div> */}
 
           <div className="w-full  md:w-4/5 h-4/5 md:font-semibold flex justify-center items-center md:justify-between mx-2 my-4 md:m-0">
             <div className="follower-following-div flex w-3/4 md:w-1/2  ">
@@ -79,11 +74,9 @@ export const ProfilePictureCard = ({ profileData }) => {
                 {profileData.following?.length} following
               </div>
             </div>
-            {/* <button className="follow-btn bg-button-gradient h-full grid place-items-center rounded-lg w-1/5  ">
-              follow
-            </button> */}
+
             <button
-              className="hidden md:block edit-profile-btn bg-button-gradient text-sm md:text-base h-full grid place-items-center rounded-lg md:w-1/5 w-1/4 "
+              className="hidden  edit-profile-btn bg-button-gradient text-sm md:text-base h-full md:grid place-items-center rounded-lg md:w-1/5 w-1/4 "
               onClick={() => dispatch(EditProfileButtonPressed())}
             >
               Edit profile

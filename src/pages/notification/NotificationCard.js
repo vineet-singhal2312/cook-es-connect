@@ -1,10 +1,8 @@
 import React from "react";
-import Avatar from "@material-ui/core/Avatar";
 import { useNavigate } from "react-router-dom";
 
 export const NotificationCard = ({ notification }) => {
   const navigate = useNavigate();
-  console.log(notification.sourceUserId);
   return (
     <div
       className="bottom-nav-user-card w-4/5 h-24 border border-brand-border p-2  flex justify-between cursor-pointer hover:bg-gray-200  items-center"
@@ -14,10 +12,10 @@ export const NotificationCard = ({ notification }) => {
     >
       <div className="w-3/5 flex ">
         {" "}
-        <Avatar
+        <img
           alt="Remy Sharp"
           src={notification.sourceUserId.profilePictureImageUrl}
-          id="l-avtar-card-avtar"
+          className="l-avtar rounded-full"
         />
         <h1 className="ml-4 capitalize text-xl flex items-center ">
           {notification.sourceUserId.userName}{" "}
