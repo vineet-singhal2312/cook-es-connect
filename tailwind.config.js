@@ -1,12 +1,7 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-  purge: {
-    enabled: process.env.NODE_ENV === "production",
-    safeList: [],
-    content: ["./index.html", "./src/**/*.tsx", "./src/**/*.ts"],
-  },
-  // purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   presets: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -24,6 +19,7 @@ module.exports = {
         },
       },
     },
+
     screens: {
       sm: "640px",
       md: "768px",
@@ -35,7 +31,7 @@ module.exports = {
       transparent: "transparent",
       current: "currentColor",
 
-      black: "#FCA5A5",
+      black: colors.black,
       white: colors.white,
       gray: colors.coolGray,
       red: colors.red,
@@ -46,6 +42,7 @@ module.exports = {
       purple: colors.violet,
       pink: colors.pink,
     },
+
     spacing: {
       px: "1px",
       0: "0px",
@@ -83,6 +80,7 @@ module.exports = {
       80: "20rem",
       96: "24rem",
     },
+
     animation: {
       none: "none",
       spin: "spin 1s linear infinite",
@@ -833,6 +831,7 @@ module.exports = {
       50: "50",
     },
   },
+
   variantOrder: [
     "first",
     "last",
