@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { LogInHandler, LogOut } from "../../utils/LogIn.utils";
+import { LogInHandler, LogOut } from "../../utils/LogIn";
 import { InstructionModal } from "../../components/InstructionsModal/InstructionModal";
 import { Alert } from "../../components/alert/Alert";
 // import Alert from "@material-ui/lab/Alert";
@@ -18,8 +18,12 @@ export const LogIn = () => {
       <div className="log-in-card h-1/2 w-1/3 bg-gray-600 rounded-lg relative z-20">
         <div className="log-in-empty-div h-16 w-12 md:h-20 md:w-20 absolute -bottom-10 right-4  md:-bottom-6 md:-right-12 z-30"></div>
         <div className="log-in-empty-div h-12 w-12  md:h-12 md:w-16 absolute -top-6 left-4 md:-left-8 z-10"></div>
-        {isAxios && <Alert message="Check your Email or Password" />}
-
+        {/* {isAxios && <Alert message="Check your Email or Password" />} */}{" "}
+        <img
+          src="/./images/company-logo.png"
+          alt="img"
+          className="header-logo-img h-1/10 w-3/5 md:w-1/2"
+        />
         <form
           className="w-3/4"
           onSubmit={(e) =>
@@ -34,6 +38,12 @@ export const LogIn = () => {
             )
           }
         >
+          {isAxios && (
+            <h1 className="mb-4 text-red-400 text-lg">
+              Check your Email or Password
+            </h1>
+          )}
+
           <input
             placeholder="EMAIL"
             id="customerEmail"

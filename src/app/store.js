@@ -1,8 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "../features/counter/counterSlice";
-import headerReducer from "../features/headerSlice";
 import loginReducer from "../features/loginSlice";
-import darkModeReducer from "../features/darkMode/darkModeSlice";
+import darkModeReducer from "../features/darkModeSlice";
 import postReducer from "../features/postsSlice";
 import profileReducer from "../features/profileSlice";
 import searchedUserProfileReducer from "../features/searchedProfileSlice";
@@ -11,8 +9,6 @@ import alertReducer from "../features/alertSlice";
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
-    header: headerReducer,
     login: loginReducer,
     dark: darkModeReducer,
     post: postReducer,

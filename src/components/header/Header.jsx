@@ -3,11 +3,12 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 import { useSelector, useDispatch } from "react-redux";
-import { hamburgerButtonClicked } from "../../features/headerSlice";
-import { darkModeButtonPressed } from "../../features/darkMode/darkModeSlice";
+// import { hamburgerButtonClicked } from "../../features/headerSlice";
+import { darkModeButtonPressed } from "../../features/darkModeSlice";
 import { SearchUserList } from "./searchUserList/SearchUserList";
 import { fetchAllUsers } from "../../features/profileSlice";
 import { fetchSearchedUsersList } from "../../features/searchedProfileSlice";
+import { debouncedFn } from "../../utils/Debouncing";
 export const Header = () => {
   const [isSearch, setIsSearch] = useState(false);
   const [userInputToBeSearch, setUserInputToBeSearch] = useState("");
@@ -18,24 +19,6 @@ export const Header = () => {
   });
   const dispatch = useDispatch();
 
-  const debounce = (func) => {
-    let timer;
-    return function (...args) {
-      const context = this;
-      if (timer) clearTimeout(timer);
-      timer = setTimeout(() => {
-        timer = null;
-        func.apply(context, args);
-      }, 500);
-    };
-  };
-
-  const searchHandle = (searchedUserName) => {
-    dispatch(fetchSearchedUsersList({ token, searchedUserName }));
-  };
-
-  const debouncedFn = debounce(searchHandle);
-
   console.log(userInputToBeSearch);
   return (
     <div className="header shadow-1 z-50 fixed w-full  h-12 px-4 flex justify-between items-center bg-transparent text-brand-primaryText ">
@@ -45,16 +28,26 @@ export const Header = () => {
           setIsSearch={setIsSearch}
         />
       )}
-      <div className="grid place-items-center  md:hidden cursor-pointer">
-        <GiHamburgerMenu onClick={() => dispatch(hamburgerButtonClicked())} />
+      <div className="grid place-items-start w-3/5 md:w-1/5 h90 cursor-pointer">
+        <img
+          src="/./images/company-logo.png"
+          alt="img"
+          className="header-logo-img h-full w-3/5 md:w-1/2"
+        />
       </div>
       <div></div>
       <div className="header-left w-1/4 md:flex hidden float-right ">
         <input
           className="search-bar background-2 w-4/5 rounded-2xl mb-0 px-4 "
-          onChange={(e) => debouncedFn(e.target.value)}
+          onChange={(e) =>
+            debouncedFn({
+              searchedUserName: e.target.value,
+              dispatch,
+              fetchSearchedUsersList,
+              token,
+            })
+          }
           onClick={() => {
-            // dispatch(fetchAllUsers(token));
             setIsSearch(!isSearch);
           }}
         />

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { SignUpHandler } from "../../utils/SignUp.utils";
+import { SignUpHandler } from "../../utils/SignUp";
 import { TiTick } from "react-icons/ti";
+import { useSelector } from "react-redux";
 
 export const SignUp = () => {
   const [userName, setUserName] = useState("");
@@ -9,17 +10,25 @@ export const SignUp = () => {
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
   const [selectedProfilePicture, setSelectedProfilePicture] = useState("");
+  const { isAxios } = useSelector((state) => state.alert);
 
   const navigate = useNavigate();
 
   return (
     <div className="w-full h-screen grid place-content-center">
       <div className="sign-up-card h-1/2 w-1/3 bg-gray-600 rounded-lg relative z-20">
-        <div className="sign-up-empty-div h-40 w-40 absolute -bottom-6 -right-16 z-30"></div>
-        <div className="sign-up-empty-div h-24 w-28 absolute -top-6 -left-16 z-10"></div>
-
+        <div className="sign-up-empty-div hidden md:block h-40 w-40 absolute -bottom-6 -right-16 z-30"></div>
+        <div className="sign-up-empty-div hidden md:block  h-24 w-28 absolute -top-6 -left-16 z-10"></div>
+        <img
+          src="/./images/company-logo.png"
+          alt="img"
+          className="header-logo-img h-20 w-3/5 md:w-1/2"
+        />{" "}
+        {isAxios && (
+          <h1 className=" text-red-400 text-lg">Check your Details</h1>
+        )}
         <form
-          className="w-3/4"
+          className="w-full md:w-3/4 p-4"
           onSubmit={(e) =>
             SignUpHandler(
               e,
@@ -83,7 +92,6 @@ export const SignUp = () => {
               <input
                 className="post-image w-1/10"
                 type="file"
-                required
                 onChange={(e) => setSelectedProfilePicture(e.target.files[0])}
               />
             </label>
@@ -110,7 +118,7 @@ export const SignUp = () => {
 
           <p className="switch-page-description">
             already a user{" "}
-            <Link to="/login" className="switch-page-link">
+            <Link to="/" className="switch-page-link">
               Log In
             </Link>
           </p>

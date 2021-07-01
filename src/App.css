@@ -105,3 +105,10 @@ input:focus {
 .w90 {
   width: 90%;
 }
+
+.h0 {
+  height: 0%;
+}
+.h15 {
+  height: 15%;
+}

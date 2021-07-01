@@ -10,6 +10,8 @@ export const PostCardCommentBar = ({ post }) => {
   const { token } = useSelector((state) => state.login);
   const dispatch = useDispatch();
   const postId = post._id;
+  // const isComment =;
+  // console.log(isComment);
   return (
     <div className="post-card-comment-bar flex flex-col border-t ">
       <div className="reaction-count-bar flex justify-between text-left w-full h-1/4  px-4">
@@ -35,6 +37,7 @@ export const PostCardCommentBar = ({ post }) => {
           onChange={(e) => setUserComment(e.target.value)}
         ></input>
         <button
+          disabled={userComment === "" ? true : false}
           className="add-comment-btn background-btn-1 text-sm md:text-lg font-medium p-1 md:w-1/5 rounded-md hover:opacity-90 "
           onClick={() => {
             dispatch(addCommentOnPost({ token, postId, userComment }));

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { TiTick } from "react-icons/ti";
 import { GrEdit } from "react-icons/gr";
 import { useDispatch, useSelector } from "react-redux";
-import { uploadTimeLinePhoto } from "../../../utils/Profile.utiles";
+import { uploadTimeLinePhoto } from "../../../utils/Profile";
 import { ProfileEditModal } from "./ProfileEditModal";
 import { EditProfileButtonPressed } from "../../../features/profileSlice";
 

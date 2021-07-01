@@ -1,7 +1,7 @@
 import axios from "axios";
 import { addPost } from "../features/postsSlice";
 
-export const uploadPost = async (
+export const uploadPost = async ({
   selectedImage,
   dispatch,
   token,
@@ -9,8 +9,8 @@ export const uploadPost = async (
   postCaption,
   setPostTitle,
   setPostCaption,
-  setSelectedImage
-) => {
+  setSelectedImage,
+}) => {
   let formData = new FormData();
   formData.append("file", selectedImage);
   formData.append("upload_preset", "cook-es-connect");

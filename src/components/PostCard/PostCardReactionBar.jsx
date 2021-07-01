@@ -1,12 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FaRegLaughSquint } from "react-icons/fa";
-import { FaLaughSquint } from "react-icons/fa";
-
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiOutlineLike } from "react-icons/ai";
-import { AiFillDislike } from "react-icons/ai";
-import { AiFillLike } from "react-icons/ai";
+import { IoRocketOutline } from "react-icons/io5";
 
 import { AiOutlineDislike } from "react-icons/ai";
 
@@ -14,6 +11,7 @@ import {
   addReactionOnPost,
   deleteReactionFromPost,
 } from "../../features/postsSlice";
+import { throttleReactionRequest } from "../../utils/Throttling";
 
 export const PostCardReactionBar = ({ post }) => {
   const dispatch = useDispatch();
@@ -34,18 +32,28 @@ export const PostCardReactionBar = ({ post }) => {
           <button
             className="like-dislike-button hover:text-lg w-1/5  grid place-items-center "
             onClick={() =>
-              dispatch(
-                deleteReactionFromPost({ token, postId, routeName: "likes" })
-              )
+              throttleReactionRequest({
+                dispatch,
+                dispatchFunc: deleteReactionFromPost,
+                token,
+                postId,
+                routeName: "likes",
+              })
             }
           >
-            <AiFillLike />
+            👍
           </button>
         ) : (
           <button
             className="like-dislike-button w-1/5 grid place-items-center "
             onClick={() =>
-              dispatch(addReactionOnPost({ token, postId, routeName: "likes" }))
+              throttleReactionRequest({
+                dispatch,
+                dispatchFunc: addReactionOnPost,
+                token,
+                postId,
+                routeName: "likes",
+              })
             }
           >
             <AiOutlineLike />
@@ -59,20 +67,28 @@ export const PostCardReactionBar = ({ post }) => {
           <button
             className="like-dislike-button w-1/5 grid place-items-center"
             onClick={() =>
-              dispatch(
-                deleteReactionFromPost({ token, postId, routeName: "dislikes" })
-              )
+              throttleReactionRequest({
+                dispatch,
+                dispatchFunc: deleteReactionFromPost,
+                token,
+                postId,
+                routeName: "dislikes",
+              })
             }
           >
-            <AiFillDislike />
+            👎
           </button>
         ) : (
           <button
             className="like-dislike-button w-1/5 grid place-items-center"
             onClick={() =>
-              dispatch(
-                addReactionOnPost({ token, postId, routeName: "dislikes" })
-              )
+              throttleReactionRequest({
+                dispatch,
+                dispatchFunc: addReactionOnPost,
+                token,
+                postId,
+                routeName: "dislikes",
+              })
             }
           >
             <AiOutlineDislike />
@@ -86,9 +102,13 @@ export const PostCardReactionBar = ({ post }) => {
           <button
             className="like-dislike-button w-1/5 grid place-items-center"
             onClick={() =>
-              dispatch(
-                deleteReactionFromPost({ token, postId, routeName: "hearts" })
-              )
+              throttleReactionRequest({
+                dispatch,
+                dispatchFunc: deleteReactionFromPost,
+                token,
+                postId,
+                routeName: "hearts",
+              })
             }
           >
             💓
@@ -97,9 +117,13 @@ export const PostCardReactionBar = ({ post }) => {
           <button
             className="like-dislike-button w-1/5 grid place-items-center"
             onClick={() =>
-              dispatch(
-                addReactionOnPost({ token, postId, routeName: "hearts" })
-              )
+              throttleReactionRequest({
+                dispatch,
+                dispatchFunc: addReactionOnPost,
+                token,
+                postId,
+                routeName: "hearts",
+              })
             }
           >
             <AiOutlineHeart />
@@ -113,21 +137,31 @@ export const PostCardReactionBar = ({ post }) => {
           <button
             className="like-dislike-button w-1/5 grid place-items-center"
             onClick={() =>
-              dispatch(
-                deleteReactionFromPost({ token, postId, routeName: "claps" })
-              )
+              throttleReactionRequest({
+                dispatch,
+                dispatchFunc: deleteReactionFromPost,
+                token,
+                postId,
+                routeName: "claps",
+              })
             }
           >
-            👏
+            🚀
           </button>
         ) : (
           <button
             className="like-dislike-button w-1/5 grid place-items-center"
             onClick={() =>
-              dispatch(addReactionOnPost({ token, postId, routeName: "claps" }))
+              throttleReactionRequest({
+                dispatch,
+                dispatchFunc: addReactionOnPost,
+                token,
+                postId,
+                routeName: "claps",
+              })
             }
           >
-            👏
+            <IoRocketOutline />
           </button>
         )}
 
@@ -138,20 +172,28 @@ export const PostCardReactionBar = ({ post }) => {
           <button
             className="like-dislike-button w-1/5 grid place-items-center"
             onClick={() =>
-              dispatch(
-                deleteReactionFromPost({ token, postId, routeName: "laughs" })
-              )
+              throttleReactionRequest({
+                dispatch,
+                dispatchFunc: deleteReactionFromPost,
+                token,
+                postId,
+                routeName: "laughs",
+              })
             }
           >
-            <FaLaughSquint />
+            😆
           </button>
         ) : (
           <button
             className="like-dislike-button w-1/5 grid place-items-center"
             onClick={() =>
-              dispatch(
-                addReactionOnPost({ token, postId, routeName: "laughs" })
-              )
+              throttleReactionRequest({
+                dispatch,
+                dispatchFunc: addReactionOnPost,
+                token,
+                postId,
+                routeName: "laughs",
+              })
             }
           >
             <FaRegLaughSquint />

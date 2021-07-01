@@ -5,7 +5,6 @@ import { PostCardCommentBar } from "./PostCardCommentBar";
 
 const transformDateString = (time) => {
   const date = new Date(time);
-
   const currentDate = date.toLocaleString("en-US");
   return currentDate;
 };

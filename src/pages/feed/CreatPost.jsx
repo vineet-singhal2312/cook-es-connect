@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TiTick } from "react-icons/ti";
 import { uploadPost } from "../../utils/Posts";
+import { throttleUploadPostRequest } from "../../utils/Throttling";
 
 export const CreatPost = () => {
   const [postTitle, setPostTitle] = useState("");
@@ -56,7 +57,8 @@ export const CreatPost = () => {
         <button
           className="creat-post-btn background-btn-1 w-1/4 h-4/5 grid place-items-center rounded-lg"
           onClick={() =>
-            uploadPost(
+            throttleUploadPostRequest({
+              uploadPost,
               selectedImage,
               dispatch,
               token,
@@ -64,8 +66,8 @@ export const CreatPost = () => {
               postCaption,
               setPostTitle,
               setPostCaption,
-              setSelectedImage
-            )
+              setSelectedImage,
+            })
           }
         >
           save post

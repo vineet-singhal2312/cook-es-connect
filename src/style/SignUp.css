@@ -102,4 +102,9 @@ textarea:-webkit-autofill:focus {
     padding: 30px 30px;
     margin-top: 3rem;
   }
+
+  .sign-up-card {
+    width: 350px;
+    height: 600px;
+  }
 }

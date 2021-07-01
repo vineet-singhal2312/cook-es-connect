@@ -26,7 +26,7 @@ export const userLogin = createAsyncThunk(
         currentUserId: response.data.id,
       })
     );
-    navigate("/");
+    navigate("/feed");
 
     return response.data;
   }

@@ -5,21 +5,21 @@ import { AiOutlineNotification } from "react-icons/ai";
 import { BsMoon } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { IoMdSunny } from "react-icons/io";
-
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { darkModeButtonPressed } from "../../features/darkMode/darkModeSlice";
+import { darkModeButtonPressed } from "../../features/darkModeSlice";
+import { LogOut } from "../../utils/LogIn";
 
 export const BottomNav = () => {
   const dispatch = useDispatch();
   const { dark } = useSelector((state) => {
     return state;
   });
-  console.log(dark);
+
   return (
     <>
       <nav
-        className="bottom-nav background-1 hover:shadow-2 z-10 md:block hidden text-brand-primaryText"
+        className="bottom-nav background-1 hover:shadow-2 z-10 block text-brand-primaryText"
         id="sideNav"
       >
         <div className="link bottom-nav-item1 icon-hover">
@@ -45,10 +45,9 @@ export const BottomNav = () => {
           <AiOutlineNotification className="bottom-nav-icon  hover:text-2xl" />
         </NavLink>
         <NavLink
-          end
           activeClassName="text-brand-secondaryText transform scale-150"
           className="bottom-nav-item3 icon-hover"
-          to="/"
+          to="/feed"
         >
           {" "}
           <AiOutlineHome className="bottom-nav-icon hover:text-2xl " />
@@ -61,11 +60,15 @@ export const BottomNav = () => {
           <CgProfile className="bottom-nav-icon hover:text-2xl" />
         </NavLink>{" "}
         <NavLink
+          end
           activeClassName="text-brand-secondaryText transform scale-150"
           className="link bottom-nav-item5 icon-hover"
-          to="/login"
+          to="/"
         >
-          <AiOutlineLogout className="bottom-nav-icon hover:text-2xl" />
+          <AiOutlineLogout
+            onClick={() => LogOut(dispatch)}
+            className="bottom-nav-icon hover:text-2xl"
+          />
         </NavLink>
       </nav>
     </>
