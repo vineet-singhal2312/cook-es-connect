@@ -1,11 +1,114 @@
 @import "./style/Header.css";
-@import "./style/FeedCard.css";
+@import "./style/PostCard.css";
+@import "./style/Feed.css";
+@import "./style/BottomNav.css";
+@import "./style/Profile.css";
+@import "./style/SignUp.css";
+@import "./style/LogIn.css";
+@import "./style/Notification.css";
+@import "./style/InstructionModal.css";
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-.App {
+.light-theme {
   text-align: center;
+
+  background: linear-gradient(
+    to right,
+    #89216b,
+    #da4453
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.dark-theme {
+  text-align: center;
+
+  background: var(--dark-background);
+}
+:root {
+  --primary-color: #fff;
+  --secondary-color: #7d2c6f;
+  --third-color: unset;
+  --card-background-color: rgba(225, 223, 215, 0.15);
+  --primaryText: "#bfbfbf";
+  --secondaryText: "#333333";
+  --dark-background: #2c3e50;
+}
+
+button:focus,
+input:focus {
+  outline: none;
+}
+
+.active-link {
+  color: red;
+}
+.bg-button-gradient {
+  background-color: #f3e6e8;
+  background-image: linear-gradient(315deg, #f3e6e8 0%, #d5d0e5 74%);
+}
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+.s-avtar {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.l-avtar {
+  width: 75px;
+  height: 75px;
+  cursor: pointer;
+}
+.xl-avtar {
+  width: 150px;
+  height: 150px;
+  cursor: pointer;
+}
+.background-0 {
+  background: var(--card-background-color);
+  backdrop-filter: blur(0.5px);
+  -webkit-backdrop-filter: blur(0.5px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.background-1 {
+  background: var(--card-background-color);
+
+  box-shadow: 0 8px 12px 0 rgba(255, 255, 255, 0.8);
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.background-2 {
+  background: var(--card-background-color);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.background-btn-1 {
+  background-color: #f3e6e8;
+  background-image: linear-gradient(315deg, #f3e6e8 0%, #d5d0e5 74%);
+}
+.shadow-1 {
+  box-shadow: 0 1px 8px 0 rgba(255, 255, 255, 0.37);
+}
+.min-h-100px {
+  min-height: 100px;
+}
+.h-400px {
+  height: 400px;
+}
+.w90 {
+  width: 90%;
+}
+
+.h0 {
+  height: 0%;
+}
+.h15 {
+  height: 15%;
 }

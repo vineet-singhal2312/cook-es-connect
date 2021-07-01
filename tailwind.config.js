@@ -5,6 +5,20 @@ module.exports = {
   presets: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    extend: {
+      colors: {
+        brand: {
+          DEFAULT: "#92E3A9",
+          light: "#E9F9EE",
+          dark: "#378065",
+          background_light: "#e8f0f2",
+          primaryText: "#bfbfbf",
+          secondaryText: "#333333",
+          border: "#bfbfbf",
+          secondaryBorder: "#333333",
+        },
+      },
+    },
     screens: {
       sm: "640px",
       md: "768px",

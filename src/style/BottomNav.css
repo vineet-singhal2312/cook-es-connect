@@ -1,0 +1,54 @@
+.bottom-nav {
+  position: fixed;
+  bottom: 0%;
+  right: 20%;
+  width: 60vw;
+  height: 15vh;
+  border-top-right-radius: 100%;
+  border-top-left-radius: 100%;
+  transition: all 1s;
+  overflow-x: hidden;
+}
+.bottom-nav:hover {
+  box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.6);
+}
+.bottom-nav-item1 {
+  position: absolute;
+  left: 10%;
+  bottom: 15%;
+}
+.bottom-nav-item2 {
+  position: absolute;
+  left: 28.75%;
+  bottom: 35%;
+}
+.bottom-nav-item3 {
+  position: absolute;
+  left: 47.5%;
+  bottom: 50%;
+}
+.bottom-nav-item4 {
+  position: absolute;
+  left: 66.25%;
+  bottom: 35%;
+}
+.bottom-nav-item5 {
+  position: absolute;
+  left: 85%;
+  bottom: 15%;
+}
+.bottom-nav-icon {
+  font-size: 2.25rem;
+  color: var(--textColor);
+}
+.icon-hover:hover {
+  transform: scale(1.5);
+  transition: all 0.5s;
+  cursor: pointer;
+}
+@media only screen and (max-width: 500px) {
+  .bottom-nav {
+    right: 3%;
+    width: 95vw;
+  }
+}

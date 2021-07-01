@@ -1,0 +1,110 @@
+.sign-up-card {
+  width: 500px;
+  height: 600px;
+  background: var(--card-background-color);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  font-size: 1rem;
+  font-family: "Spartan";
+  color: var(--textColor);
+  display: grid;
+  place-items: center;
+}
+.sign-up-empty-div {
+  background: rgba(225, 223, 215, 0.3);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sign-up-input {
+  background: var(--card-background-color);
+  backdrop-filter: blur(0.5px);
+  -webkit-backdrop-filter: blur(0.5px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  line-height: 2rem;
+  font-family: "Spartan";
+  outline: none;
+  margin-bottom: 3rem;
+}
+.switch-page-description {
+  color: white;
+}
+.switch-page-link {
+  color: black;
+}
+
+em {
+  color: #f45702;
+  font-weight: bold;
+}
+
+textarea {
+  resize: none;
+}
+
+.sign-up-button {
+  margin: 0rem 0.3rem;
+
+  display: block;
+  float: right;
+  padding: 0.25rem 3rem;
+  border: none;
+  background: var(--secondaryColor);
+  color: white;
+  letter-spacing: 2px;
+  transition: 0.2s all ease-in-out;
+  border-bottom: 2px solid transparent;
+  outline: none;
+  cursor: pointer;
+  background: inherit;
+  color: var(--secondaryColor);
+  border-radius: 10px;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.sign-up-button:hover {
+  color: white;
+
+  background: rgba(225, 223, 215, 0.3);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+::selection {
+  background: #ffc7b8;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  border: 1px solid var(--secondaryColor);
+  -webkit-text-fill-color: #2a293e;
+  -webkit-box-shadow: 0 0 0px 1000px var(--textColor) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+@media only screen and (max-width: 500px) {
+  .contact-us {
+    padding: 30px 30px;
+    margin-top: 3rem;
+  }
+
+  .sign-up-card {
+    width: 350px;
+    height: 600px;
+  }
+}
