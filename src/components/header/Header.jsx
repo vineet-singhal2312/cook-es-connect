@@ -13,13 +13,13 @@ export const Header = () => {
   const [isSearch, setIsSearch] = useState(false);
   const [userInputToBeSearch, setUserInputToBeSearch] = useState("");
 
-  const { token } = useSelector((state) => state.login);
-  const { dark } = useSelector((state) => {
-    return state;
+  const { token } = useSelector((state) => {
+    console.log(state);
+    return state.login;
   });
+
   const dispatch = useDispatch();
 
-  console.log(userInputToBeSearch);
   return (
     <div className="header shadow-1 z-50 fixed w-full  h-12 px-4 flex justify-between items-center bg-transparent text-brand-primaryText ">
       {isSearch && (
@@ -40,6 +40,8 @@ export const Header = () => {
         <input
           className="search-bar background-2 w-4/5 rounded-2xl mb-0 px-4 "
           onChange={(e) =>
+            // (e) => searchHandle(e.target.value)
+
             debouncedFn({
               searchedUserName: e.target.value,
               dispatch,

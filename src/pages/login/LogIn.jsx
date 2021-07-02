@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { LogInHandler, LogOut } from "../../utils/LogIn";
@@ -12,7 +12,11 @@ export const LogIn = () => {
   const dispatch = useDispatch();
   const { isUserLoggedIn } = useSelector((state) => state.login);
   const { isAxios } = useSelector((state) => state.alert);
-
+  useEffect(() => {
+    if (isUserLoggedIn) {
+      LogOut(dispatch);
+    }
+  }, []);
   return (
     <div className="w-full h-screen grid place-content-center">
       <div className="log-in-card h-1/2 w-1/3 bg-gray-600 rounded-lg relative z-20">

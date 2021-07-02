@@ -12,10 +12,14 @@ const initialState = JSON.parse(localStorage?.getItem("login")) || {
 export const userLogin = createAsyncThunk(
   "login/userLogin",
   async ({ email, password, navigate }) => {
-    const response = await axios.post(`http://localhost:8000/login`, {
-      email,
-      password,
-    });
+    const response = await axios.post(
+      // `http://localhost:8000/login`,
+      `https://cook-es-connect.herokuapp.com/login`,
+      {
+        email,
+        password,
+      }
+    );
     localStorage?.setItem(
       "login",
       JSON.stringify({

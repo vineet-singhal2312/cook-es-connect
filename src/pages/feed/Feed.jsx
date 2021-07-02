@@ -15,10 +15,11 @@ export const Feed = () => {
   const { token } = useSelector((state) => state.login);
   const { isAxios } = useSelector((state) => state.alert);
   const { status, isCommentBox } = useSelector((state) => state.post);
-
+  console.log(token);
   const dispatch = useDispatch();
   useEffect(() => {
     if (status === "idle") {
+      console.log("ssss");
       dispatch(fetchPosts(token));
     }
   }, [dispatch, status, token]);

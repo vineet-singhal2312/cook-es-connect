@@ -13,7 +13,9 @@ export const fetchSearchedUsersList = createAsyncThunk(
   async ({ token, searchedUserName }) => {
     console.log(token, searchedUserName);
     const response = await axios.get(
-      `http://localhost:8000/searched-profile/users/${searchedUserName}`,
+      // `http://localhost:8000/searched-profile/users/${searchedUserName}`,
+      `https://cook-es-connect.herokuapp.com/searched-profile/users/${searchedUserName}`,
+
       {
         headers: { authorization: token },
       }
@@ -27,7 +29,9 @@ export const fetchSearchedUserProfileData = createAsyncThunk(
   async ({ token, searchedUserId }) => {
     console.log(token, searchedUserId);
     const response = await axios.get(
-      `http://localhost:8000/searched-profile/${searchedUserId}`,
+      // `http://localhost:8000/searched-profile/${searchedUserId}`,
+      `https://cook-es-connect.herokuapp.com/searched-profile/${searchedUserId}`,
+
       {
         headers: { authorization: token },
       }
@@ -42,7 +46,10 @@ export const getPostsOfSearchedUser = createAsyncThunk(
   async ({ token, searchedUserId }) => {
     console.log("getData");
     const response = await axios.get(
-      `http://localhost:8000/searched-profile/posts/${searchedUserId}`,
+      // `http://localhost:8000/searched-profile/posts/${searchedUserId}`,
+
+      `https://cook-es-connect.herokuapp.com/searched-profile/posts/${searchedUserId}`,
+
       {
         headers: { authorization: token },
       }
@@ -57,7 +64,9 @@ export const followProfile = createAsyncThunk(
   async ({ token, searchedUserId }) => {
     console.log("getData", token, searchedUserId);
     const response = await axios.post(
-      `http://localhost:8000/searched-profile/follow`,
+      // `http://localhost:8000/searched-profile/follow`,
+      `https://cook-es-connect.herokuapp.com/searched-profile/follow`,
+
       { searchedUserId },
       {
         headers: { authorization: token },
@@ -73,7 +82,8 @@ export const UnFollowProfile = createAsyncThunk(
   async ({ token, searchedUserId }) => {
     console.log("getData", token, searchedUserId);
     const response = await axios.delete(
-      `http://localhost:8000/searched-profile/follow`,
+      // `http://localhost:8000/searched-profile/follow`,
+      `https://cook-es-connect.herokuapp.com/searched-profile/follow`,
 
       {
         data: { searchedUserId },
