@@ -24,13 +24,7 @@ export const SignUpHandler = async (
       "https://api.cloudinary.com/v1_1/dxlube6si/image/upload",
       formData
     );
-    console.log(data.data.secure_url);
     const profilePictureImageUrl = data.data.secure_url;
-    console.log(userName);
-    console.log(email);
-    console.log(password1);
-    console.log(password2);
-
     await ApiService(
       "post",
       {
@@ -47,7 +41,7 @@ export const SignUpHandler = async (
     setEmail("");
     setPassword1("");
     setPassword2("");
-    navigate("/login");
+    navigate("/");
   } catch (error) {
     console.log(error);
     // console.log(error.data);
