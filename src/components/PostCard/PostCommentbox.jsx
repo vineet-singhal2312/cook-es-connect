@@ -24,10 +24,6 @@ export const PostCommentBox = () => {
 
   const isCurrentUserPost = post?.userId?._id === currentUserId;
 
-  console.log(isCurrentUserPost);
-  console.log(post?.userId?._id);
-  console.log(currentUserId);
-
   return (
     <div className=" post-comments-box background-btn-1 fixed flex flex-col justify-between rounded-lg z-40 text-brand-secondaryText">
       <div

@@ -4,6 +4,7 @@ export const alertSlice = createSlice({
   name: "instruction",
   initialState: {
     isAxios: false,
+    isLoading: false,
   },
   reducers: {
     axiosFailed: (state) => {
@@ -12,9 +13,15 @@ export const alertSlice = createSlice({
         isAxios: !state.isAxios,
       };
     },
+    axiosLoad: (state) => {
+      return {
+        ...state,
+        isLoading: !state.isLoading,
+      };
+    },
   },
 });
 
-export const { axiosFailed } = alertSlice.actions;
+export const { axiosFailed, axiosLoad } = alertSlice.actions;
 
 export default alertSlice.reducer;

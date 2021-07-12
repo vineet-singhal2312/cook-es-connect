@@ -91,7 +91,6 @@ export const addCommentOnPost = createAsyncThunk(
 export const deleteCommentFromPost = createAsyncThunk(
   "posts/deleteCommentFromPost",
   async ({ token, postId, commentId }) => {
-    console.log(token, postId);
     const response = await axios.delete(
       // `http://localhost:8000/posts/comments`,
       `https://cook-es-connect.herokuapp.com/posts/comments`,
@@ -122,40 +121,65 @@ export const postsSlice = createSlice({
   },
 
   extraReducers: {
-    [fetchPosts.pending]: (state) => {
-      state.status = "loading";
-    },
     [fetchPosts.fulfilled]: (state, action) => {
       state.status = "fulfilled";
       state.posts = action.payload;
     },
-    // [fetchPosts.rejected]: (state, action) => {
-    //   state.status = "error";
-    //   state.error = action.error.message;
-    // },
+    [fetchPosts.pending]: (state) => {
+      state.status = "loading";
+    },
+    [fetchPosts.rejected]: (state) => {
+      state.status = "fulfilled";
+    },
     [addPost.fulfilled]: (state, action) => {
       state.status = "fulfilled";
       state.posts = action.payload;
+    },
+    [addPost.pending]: (state, action) => {
+      state.status = "loading";
+    },
+    [addPost.rejected]: (state) => {
+      state.status = "fulfilled";
     },
     [addReactionOnPost.fulfilled]: (state, action) => {
       state.status = "fulfilled";
       state.posts = action.payload;
     },
-    [deleteReactionFromPost.fulfilled]: (state, action) => {
+    [addReactionOnPost.pending]: (state, action) => {
+      state.status = "loading";
+    },
+    [addReactionOnPost.rejected]: (state) => {
       state.status = "fulfilled";
-      state.posts = action.payload;
     },
     [deleteReactionFromPost.fulfilled]: (state, action) => {
       state.status = "fulfilled";
       state.posts = action.payload;
+    },
+    [deleteReactionFromPost.pending]: (state, action) => {
+      state.status = "loading";
+    },
+    [deleteReactionFromPost.rejected]: (state) => {
+      state.status = "fulfilled";
     },
     [deleteCommentFromPost.fulfilled]: (state, action) => {
       state.status = "fulfilled";
       state.posts = action.payload;
     },
+    [deleteCommentFromPost.pending]: (state, action) => {
+      state.status = "loading";
+    },
+    [deleteCommentFromPost.rejected]: (state) => {
+      state.status = "fulfilled";
+    },
     [addCommentOnPost.fulfilled]: (state, action) => {
       state.status = "fulfilled";
       state.posts = action.payload;
+    },
+    [addCommentOnPost.pending]: (state, action) => {
+      state.status = "loading";
+    },
+    [addCommentOnPost.rejected]: (state) => {
+      state.status = "fulfilled";
     },
   },
 });

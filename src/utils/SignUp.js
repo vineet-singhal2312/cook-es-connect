@@ -1,4 +1,5 @@
 import axios from "axios";
+import { axiosLoad } from "../features/alertSlice";
 import { ApiService } from "./ApiServirces";
 
 export const SignUpHandler = async (
@@ -7,13 +8,12 @@ export const SignUpHandler = async (
   email,
   password1,
   password2,
-  setUserName,
-  setEmail,
-  setPassword1,
-  setPassword2,
   navigate,
-  selectedProfilePicture
+  selectedProfilePicture,
+  dispatch
 ) => {
+  e.preventDefault();
+  dispatch(axiosLoad());
   let formData = new FormData();
   formData.append("file", selectedProfilePicture);
   formData.append("upload_preset", "cook-es-connect");
@@ -36,14 +36,10 @@ export const SignUpHandler = async (
       },
       "signup"
     );
-
-    setUserName("");
-    setEmail("");
-    setPassword1("");
-    setPassword2("");
+    dispatch(axiosLoad());
     navigate("/");
   } catch (error) {
     console.log(error);
-    // console.log(error.data);
+    dispatch(axiosLoad());
   }
 };

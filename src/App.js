@@ -23,13 +23,9 @@ function App() {
         <Route path="/feed" element={<Feed />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/users/:searchedUserId" element={<SearchedProfile />} />
-
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/" element={<LogIn />} />
         <Route path="/notifications" element={<Notifications />} />
-
-        {/* <Route path="/liked" element={<Feed />} /> */}
-        {/* <Route path="/message" element={<Feed />} /> */}
       </Routes>
     </div>
   );

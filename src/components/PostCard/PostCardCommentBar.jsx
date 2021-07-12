@@ -10,8 +10,6 @@ export const PostCardCommentBar = ({ post }) => {
   const { token } = useSelector((state) => state.login);
   const dispatch = useDispatch();
   const postId = post._id;
-  // const isComment =;
-  // console.log(isComment);
   return (
     <div className="post-card-comment-bar flex flex-col border-t ">
       <div className="reaction-count-bar flex justify-between text-left w-full h-1/4  px-4">
@@ -21,7 +19,7 @@ export const PostCardCommentBar = ({ post }) => {
             post.hearts.length +
             post.claps.length +
             post.laughs.length}{" "}
-          people reacted on your post
+          reactions on your post
         </p>
         <p
           className="see-comments cursor-pointer text-sm md:text-lg text-right w-1/5"

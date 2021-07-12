@@ -40,7 +40,6 @@ export const fetchAllUsers = createAsyncThunk(
 export const getPostsForProfile = createAsyncThunk(
   "profile/getPostsForProfile",
   async (token) => {
-    console.log("getData");
     const response = await axios.get(
       // `http://localhost:8000/profile/posts`,
       `https://cook-es-connect.herokuapp.com/profile/posts`,
@@ -72,7 +71,6 @@ export const addTimeLinePhoto = createAsyncThunk(
 export const updateUserInfo = createAsyncThunk(
   "profile/updateUserInfo",
   async ({ token, updateToBeUserName }) => {
-    console.log(token, updateToBeUserName);
     const response = await axios.put(
       // `http://localhost:8000/profile`,
       `https://cook-es-connect.herokuapp.com/profile`,

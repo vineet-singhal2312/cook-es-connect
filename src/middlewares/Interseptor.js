@@ -1,14 +1,12 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import axios from "axios";
 import { axiosFailed } from "../features/alertSlice";
 import { useDispatch } from "react-redux";
-// import { useAuth } from "../providers/AuthProvider";
 
 function Interceptor() {
-  //   const { setIsAxiosFullfil } = useAuth();
   const dispatch = useDispatch();
 
-  const addErrorInterceptor = () => {
+  const addErrorInterceptor = useCallback(() => {
     axios.interceptors.response.use(
       (response) => {
         return response;
@@ -23,7 +21,6 @@ function Interceptor() {
             // }, 2000);
             console.log("Something went wrong. 401");
           }
-          // console.log("Something went wrong.");
           if (code === 403) {
             console.log("You’re not authorized to do that.");
             //   setIsAxiosFullfil(true);
@@ -41,27 +38,22 @@ function Interceptor() {
           }
 
           if (code === 404) {
-            console.log("status code 404");
-            //   setIsAxiosFullfil(true);
-            //   setTimeout(() => {
-            //     setIsAxiosFullfil(false);
-            //   }, 5000);
+            dispatch(axiosFailed());
+
+            setTimeout(() => {
+              dispatch(axiosFailed());
+            }, 5000);
           }
 
-          //     else if (error.message) {
-          //       console.log(error.message);
-          //     }
-          //     console.log("interseptor");
-          //   }
           console.log("interseptor");
         }
       }
     );
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     addErrorInterceptor();
-  }, []);
+  }, [addErrorInterceptor]);
 
   return null;
 }
