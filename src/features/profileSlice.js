@@ -12,28 +12,42 @@ const initialState = {
 export const fetchProfileData = createAsyncThunk(
   "profile/fetchProfileData",
   async (token) => {
-    const response = await axios.get(`http://localhost:8000/profile`, {
-      headers: { authorization: token },
-    });
+    const response = await axios.get(
+      // `http://localhost:8000/profile`,
+      `https://cook-es-connect.herokuapp.com/profile`,
+
+      {
+        headers: { authorization: token },
+      }
+    );
     return response.data.result[0];
   }
 );
 export const fetchAllUsers = createAsyncThunk(
   "profile/fetchAllUsers",
   async (token) => {
-    const response = await axios.get(`http://localhost:8000/profile/users`, {
-      headers: { authorization: token },
-    });
+    const response = await axios.get(
+      // `http://localhost:8000/profile/users`,
+      `https://cook-es-connect.herokuapp.com/profile/users`,
+
+      {
+        headers: { authorization: token },
+      }
+    );
     return response.data.results;
   }
 );
 export const getPostsForProfile = createAsyncThunk(
   "profile/getPostsForProfile",
   async (token) => {
-    console.log("getData");
-    const response = await axios.get(`http://localhost:8000/profile/posts`, {
-      headers: { authorization: token },
-    });
+    const response = await axios.get(
+      // `http://localhost:8000/profile/posts`,
+      `https://cook-es-connect.herokuapp.com/profile/posts`,
+
+      {
+        headers: { authorization: token },
+      }
+    );
     return response.data.results;
   }
 );
@@ -42,7 +56,9 @@ export const addTimeLinePhoto = createAsyncThunk(
   "profile/addTimeLinePhoto",
   async ({ token, timelineImageUrl }) => {
     const response = await axios.post(
-      `http://localhost:8000/profile/timeline`,
+      // `http://localhost:8000/profile/timeline`,
+      `https://cook-es-connect.herokuapp.com/profile/timeline`,
+
       {
         timelineImageUrl,
       },
@@ -55,9 +71,10 @@ export const addTimeLinePhoto = createAsyncThunk(
 export const updateUserInfo = createAsyncThunk(
   "profile/updateUserInfo",
   async ({ token, updateToBeUserName }) => {
-    console.log(token, updateToBeUserName);
     const response = await axios.put(
-      `http://localhost:8000/profile`,
+      // `http://localhost:8000/profile`,
+      `https://cook-es-connect.herokuapp.com/profile`,
+
       {
         updateToBeUserName,
       },

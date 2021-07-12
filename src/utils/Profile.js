@@ -17,7 +17,6 @@ export const uploadTimeLinePhoto = async (
       "https://api.cloudinary.com/v1_1/dxlube6si/image/upload",
       formData
     );
-    console.log(data.data.secure_url);
     const timelineImageUrl = data.data.secure_url;
     await dispatch(
       addTimeLinePhoto({

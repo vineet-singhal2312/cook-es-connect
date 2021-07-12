@@ -1,25 +1,21 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
-import { GiHamburgerMenu } from "react-icons/gi";
 
 import { useSelector, useDispatch } from "react-redux";
-// import { hamburgerButtonClicked } from "../../features/headerSlice";
-import { darkModeButtonPressed } from "../../features/darkModeSlice";
 import { SearchUserList } from "./searchUserList/SearchUserList";
 import { fetchAllUsers } from "../../features/profileSlice";
 import { fetchSearchedUsersList } from "../../features/searchedProfileSlice";
 import { debouncedFn } from "../../utils/Debouncing";
 export const Header = () => {
   const [isSearch, setIsSearch] = useState(false);
-  const [userInputToBeSearch, setUserInputToBeSearch] = useState("");
+  const [userInputToBeSearch] = useState("");
 
-  const { token } = useSelector((state) => state.login);
-  const { dark } = useSelector((state) => {
-    return state;
+  const { token } = useSelector((state) => {
+    return state.login;
   });
+
   const dispatch = useDispatch();
 
-  console.log(userInputToBeSearch);
   return (
     <div className="header shadow-1 z-50 fixed w-full  h-12 px-4 flex justify-between items-center bg-transparent text-brand-primaryText ">
       {isSearch && (
@@ -60,16 +56,6 @@ export const Header = () => {
         >
           <AiOutlineSearch />
         </div>
-        {/* <div className="toggle-button r center w-1/5" id="toggle-button">
-          <input
-            type="checkbox"
-            className="checkbox"
-            checked={dark.isDarkModeEnable}
-            onChange={() => dispatch(darkModeButtonPressed())}
-          />
-          <div className="knobs"></div>
-          <div className="layer"></div>
-        </div> */}
       </div>
     </div>
   );

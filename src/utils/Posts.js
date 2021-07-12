@@ -21,7 +21,6 @@ export const uploadPost = async ({
       "https://api.cloudinary.com/v1_1/dxlube6si/image/upload",
       formData
     );
-    console.log(data.data.secure_url);
     const imageUrl = data.data.secure_url;
     dispatch(
       addPost({
@@ -38,6 +37,4 @@ export const uploadPost = async ({
   } catch (error) {
     console.log(error);
   }
-
-  //   const file = data.data;
 };

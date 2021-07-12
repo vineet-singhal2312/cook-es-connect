@@ -9,9 +9,14 @@ const initialState = {
 export const getNotifications = createAsyncThunk(
   "notification/getNotifications",
   async (token) => {
-    const response = await axios.get(`http://localhost:8000/notifications`, {
-      headers: { authorization: token },
-    });
+    const response = await axios.get(
+      // `http://localhost:8000/notifications`,
+      `https://cook-es-connect.herokuapp.com/notifications`,
+
+      {
+        headers: { authorization: token },
+      }
+    );
     return response.data.results;
   }
 );
@@ -29,6 +34,5 @@ export const notificationSlice = createSlice({
     },
   },
 });
-export const {} = notificationSlice.actions;
 
 export default notificationSlice.reducer;

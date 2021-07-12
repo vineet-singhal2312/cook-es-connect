@@ -8,7 +8,6 @@ export const SearchUserList = ({ userInput, setIsSearch }) => {
     (state) => state.searchedUserProfile
   );
 
-  console.log(searchedUserList);
   return (
     <div className="search-user-list scrollbar-hidden overflow-scroll z-50 absolute right-44 top-10 bg-white">
       {searchedUserList.map((user) => (

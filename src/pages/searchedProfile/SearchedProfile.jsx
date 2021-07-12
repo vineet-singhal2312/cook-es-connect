@@ -13,7 +13,6 @@ import { SearchedUserProfilePictureCard } from "./SearchedUserProfilePictureCard
 export const SearchedProfile = () => {
   const { token } = useSelector((state) => state.login);
   const { searchedUserId } = useParams();
-  console.log(searchedUserId);
   const dispatch = useDispatch();
 
   const { status, searchedUserProfileData, searchedUserPosts } = useSelector(

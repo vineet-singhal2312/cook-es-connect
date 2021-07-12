@@ -11,9 +11,12 @@ export const CreatPost = () => {
   const dispatch = useDispatch();
 
   const { token } = useSelector((state) => state.login);
-
+  const { isAxios } = useSelector((state) => state.alert);
   return (
     <div className="creat-post background-0 rounded-lg w-full p-4 flex flex-col justify-around items-start relative">
+      {isAxios && (
+        <p className="text-red-400">Check all fields or try again!!</p>
+      )}
       <h2 className="w-4/5 h-1/10 flex items-center ">Creat your post</h2>
       <input
         className="post-title background-0 rounded-lg px-4"

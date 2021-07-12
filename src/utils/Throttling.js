@@ -16,7 +16,7 @@ const reactionFunc = ({ dispatch, dispatchFunc, token, postId, routeName }) => {
   dispatch(dispatchFunc({ token, postId, routeName: routeName }));
 };
 
-export const throttleReactionRequest = throttle(reactionFunc, 500);
+export const throttleReactionRequest = throttle(reactionFunc, 800);
 
 const uploadPostFunc = ({
   uploadPost,

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { axiosLoad } from "../features/alertSlice";
 import { ApiService } from "./ApiServirces";
 
 export const SignUpHandler = async (
@@ -7,13 +8,12 @@ export const SignUpHandler = async (
   email,
   password1,
   password2,
-  setUserName,
-  setEmail,
-  setPassword1,
-  setPassword2,
   navigate,
-  selectedProfilePicture
+  selectedProfilePicture,
+  dispatch
 ) => {
+  e.preventDefault();
+  dispatch(axiosLoad());
   let formData = new FormData();
   formData.append("file", selectedProfilePicture);
   formData.append("upload_preset", "cook-es-connect");
@@ -24,13 +24,7 @@ export const SignUpHandler = async (
       "https://api.cloudinary.com/v1_1/dxlube6si/image/upload",
       formData
     );
-    console.log(data.data.secure_url);
     const profilePictureImageUrl = data.data.secure_url;
-    console.log(userName);
-    console.log(email);
-    console.log(password1);
-    console.log(password2);
-
     await ApiService(
       "post",
       {
@@ -42,14 +36,10 @@ export const SignUpHandler = async (
       },
       "signup"
     );
-
-    setUserName("");
-    setEmail("");
-    setPassword1("");
-    setPassword2("");
-    navigate("/login");
+    dispatch(axiosLoad());
+    navigate("/");
   } catch (error) {
     console.log(error);
-    // console.log(error.data);
+    dispatch(axiosLoad());
   }
 };

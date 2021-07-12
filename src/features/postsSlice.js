@@ -12,7 +12,9 @@ export const addPost = createAsyncThunk(
   "posts/addPostToServer",
   async ({ token, postTitle, postCaption, imageUrl }) => {
     const response = await axios.post(
-      `http://localhost:8000/posts`,
+      // `http://localhost:8000/posts`,
+      `https://cook-es-connect.herokuapp.com/posts`,
+
       {
         postTitle,
         postCaption,
@@ -27,9 +29,14 @@ export const addPost = createAsyncThunk(
 export const fetchPosts = createAsyncThunk(
   "posts/fetchFromServer",
   async (token) => {
-    const response = await axios.get(`http://localhost:8000/posts`, {
-      headers: { authorization: token },
-    });
+    const response = await axios.get(
+      // `http://localhost:8000/posts`,
+      `https://cook-es-connect.herokuapp.com/posts`,
+
+      {
+        headers: { authorization: token },
+      }
+    );
     return response.data.results;
   }
 );
@@ -38,7 +45,9 @@ export const addReactionOnPost = createAsyncThunk(
   "posts/addReactionOnPost",
   async ({ token, postId, routeName }) => {
     const response = await axios.post(
-      `http://localhost:8000/posts/${routeName}`,
+      // `http://localhost:8000/posts/${routeName}`,
+      `https://cook-es-connect.herokuapp.com/posts/${routeName}`,
+
       {
         postId,
       },
@@ -52,7 +61,9 @@ export const deleteReactionFromPost = createAsyncThunk(
   "posts/deleteReactionFromPost",
   async ({ token, postId, routeName }) => {
     const response = await axios.delete(
-      `http://localhost:8000/posts/${routeName}`,
+      // `http://localhost:8000/posts/${routeName}`,
+      `https://cook-es-connect.herokuapp.com/posts/${routeName}`,
+
       {
         data: {
           postId,
@@ -68,7 +79,9 @@ export const addCommentOnPost = createAsyncThunk(
   "posts/addCommentOnPost",
   async ({ token, postId, userComment }) => {
     const response = await axios.post(
-      `http://localhost:8000/posts/comments`,
+      // `http://localhost:8000/posts/comments`,
+      `https://cook-es-connect.herokuapp.com/posts/comments`,
+
       { postId, userComment },
       { headers: { authorization: token } }
     );
@@ -78,9 +91,9 @@ export const addCommentOnPost = createAsyncThunk(
 export const deleteCommentFromPost = createAsyncThunk(
   "posts/deleteCommentFromPost",
   async ({ token, postId, commentId }) => {
-    console.log(token, postId);
     const response = await axios.delete(
-      `http://localhost:8000/posts/comments`,
+      // `http://localhost:8000/posts/comments`,
+      `https://cook-es-connect.herokuapp.com/posts/comments`,
 
       {
         data: {
@@ -108,40 +121,65 @@ export const postsSlice = createSlice({
   },
 
   extraReducers: {
-    [fetchPosts.pending]: (state) => {
-      state.status = "loading";
-    },
     [fetchPosts.fulfilled]: (state, action) => {
       state.status = "fulfilled";
       state.posts = action.payload;
     },
-    [fetchPosts.rejected]: (state, action) => {
-      state.status = "error";
-      state.error = action.error.message;
+    [fetchPosts.pending]: (state) => {
+      state.status = "loading";
+    },
+    [fetchPosts.rejected]: (state) => {
+      state.status = "fulfilled";
     },
     [addPost.fulfilled]: (state, action) => {
       state.status = "fulfilled";
       state.posts = action.payload;
     },
+    [addPost.pending]: (state, action) => {
+      state.status = "loading";
+    },
+    [addPost.rejected]: (state) => {
+      state.status = "fulfilled";
+    },
     [addReactionOnPost.fulfilled]: (state, action) => {
       state.status = "fulfilled";
       state.posts = action.payload;
     },
-    [deleteReactionFromPost.fulfilled]: (state, action) => {
+    [addReactionOnPost.pending]: (state, action) => {
+      state.status = "loading";
+    },
+    [addReactionOnPost.rejected]: (state) => {
       state.status = "fulfilled";
-      state.posts = action.payload;
     },
     [deleteReactionFromPost.fulfilled]: (state, action) => {
       state.status = "fulfilled";
       state.posts = action.payload;
+    },
+    [deleteReactionFromPost.pending]: (state, action) => {
+      state.status = "loading";
+    },
+    [deleteReactionFromPost.rejected]: (state) => {
+      state.status = "fulfilled";
     },
     [deleteCommentFromPost.fulfilled]: (state, action) => {
       state.status = "fulfilled";
       state.posts = action.payload;
     },
+    [deleteCommentFromPost.pending]: (state, action) => {
+      state.status = "loading";
+    },
+    [deleteCommentFromPost.rejected]: (state) => {
+      state.status = "fulfilled";
+    },
     [addCommentOnPost.fulfilled]: (state, action) => {
       state.status = "fulfilled";
       state.posts = action.payload;
+    },
+    [addCommentOnPost.pending]: (state, action) => {
+      state.status = "loading";
+    },
+    [addCommentOnPost.rejected]: (state) => {
+      state.status = "fulfilled";
     },
   },
 });

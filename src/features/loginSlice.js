@@ -7,15 +7,20 @@ const initialState = JSON.parse(localStorage?.getItem("login")) || {
   name: null,
   profilePicture: null,
   currentUserId: null,
+  status: "idle",
 };
 
 export const userLogin = createAsyncThunk(
   "login/userLogin",
   async ({ email, password, navigate }) => {
-    const response = await axios.post(`http://localhost:8000/login`, {
-      email,
-      password,
-    });
+    const response = await axios.post(
+      // `http://localhost:8000/login`,
+      `https://cook-es-connect.herokuapp.com/login`,
+      {
+        email,
+        password,
+      }
+    );
     localStorage?.setItem(
       "login",
       JSON.stringify({
@@ -43,16 +48,24 @@ export const loginSlice = createSlice({
         name: null,
         profilePicture: null,
         currentUserId: null,
+        status: "idle",
       };
     },
   },
   extraReducers: {
     [userLogin.fulfilled]: (state, action) => {
+      state.status = "fulfilled";
       state.token = action.payload.token;
       state.isUserLoggedIn = true;
       state.name = action.payload.userName;
       state.profilePicture = action.payload.profilePictureImageUrl;
       state.currentUserId = action.payload.id;
+    },
+    [userLogin.pending]: (state, action) => {
+      state.status = "loading";
+    },
+    [userLogin.rejected]: (state, action) => {
+      state.status = "idle";
     },
   },
 });
