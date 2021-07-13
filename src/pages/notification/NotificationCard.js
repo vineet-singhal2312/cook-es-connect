@@ -4,6 +4,7 @@ import moment from "moment";
 
 export const NotificationCard = ({ notification }) => {
   const navigate = useNavigate();
+  console.log(notification);
   return (
     <div
       className="notification-card w90 md:w-4/5 h-24 border border-brand-border p-2  flex justify-between cursor-pointer hover:bg-gray-200  items-center"
@@ -15,12 +16,12 @@ export const NotificationCard = ({ notification }) => {
         {" "}
         <img
           alt="Remy Sharp"
-          src={notification.sourceUserId.profilePictureImageUrl}
+          src={notification.sourceUserId?.profilePictureImageUrl}
           className="l-avtar rounded-full"
         />
         <div className="flex flex-col justify-center items-start p-4">
           <h1 className=" capitalize text-base md:text-xl flex items-center ">
-            {notification.sourceUserId.userName}{" "}
+            {notification.sourceUserId?.userName}{" "}
             <small className="normal-case ml-1">{notification.message}</small>{" "}
           </h1>
           <p className="text-sm md:text-base">
