@@ -9,7 +9,6 @@ const initialState = JSON.parse(localStorage?.getItem("login")) || {
   currentUserId: null,
   status: "idle",
 };
-
 export const userLogin = createAsyncThunk(
   "login/userLogin",
   async ({ email, password, navigate }) => {
@@ -21,6 +20,7 @@ export const userLogin = createAsyncThunk(
         password,
       }
     );
+    console.log("hey---1");
     localStorage?.setItem(
       "login",
       JSON.stringify({
@@ -54,6 +54,7 @@ export const loginSlice = createSlice({
   },
   extraReducers: {
     [userLogin.fulfilled]: (state, action) => {
+      console.log("heyyy");
       state.status = "fulfilled";
       state.token = action.payload.token;
       state.isUserLoggedIn = true;

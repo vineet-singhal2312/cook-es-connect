@@ -89,16 +89,20 @@ export const UnFollowProfile = createAsyncThunk(
 export const searchedProfileSlice = createSlice({
   name: "searched-profile",
   initialState,
-  reducers: {},
+  reducers: {
+    setSearchedProfileStatusToIdle: (state) => {
+      return {
+        ...state,
+        status: "idle",
+      };
+    },
+  },
 
   extraReducers: {
     [fetchSearchedUsersList.fulfilled]: (state, action) => {
-      state.status = "fulfilled";
       state.searchedUserList = action.payload;
     },
-    [fetchSearchedUsersList.pending]: (state) => {
-      state.status = "loading";
-    },
+
     [fetchSearchedUserProfileData.fulfilled]: (state, action) => {
       state.status = "fulfilled";
       state.searchedUserProfileData = action.payload;
@@ -129,5 +133,5 @@ export const searchedProfileSlice = createSlice({
     },
   },
 });
-
+export const { setSearchedProfileStatusToIdle } = searchedProfileSlice.actions;
 export default searchedProfileSlice.reducer;

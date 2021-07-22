@@ -4,7 +4,6 @@ import moment from "moment";
 
 export const NotificationCard = ({ notification }) => {
   const navigate = useNavigate();
-  console.log(notification);
   return (
     <div
       className="notification-card w90 md:w-4/5 h-24 border border-brand-border p-2  flex justify-between cursor-pointer hover:bg-gray-200  items-center"

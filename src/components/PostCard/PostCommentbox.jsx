@@ -14,13 +14,19 @@ export const PostCommentBox = () => {
   const [deleteToBeCommentId, setDeleteToBeCommentId] = useState("");
 
   const [isDeleteComment, setIsDeleteComment] = useState(false);
-  const { posts, currentPost } = useSelector((state) => state.post);
+  const feed = useSelector((state) => state.post);
+  const profile = useSelector((state) => state.profile);
+  const searchedUserProfile = useSelector((state) => state.searchedUserProfile);
+
   const { token, currentUserId } = useSelector((state) => {
     return state.login;
   });
   const dispatch = useDispatch();
-  const postId = currentPost._id;
-  const post = posts.find((post) => post._id === postId);
+  const postId = feed.currentPost._id;
+  const post =
+    feed.posts.find((post) => post._id === postId) ||
+    profile.posts.find((post) => post._id === postId) ||
+    searchedUserProfile.searchedUserPosts.find((post) => post._id === postId);
 
   const isCurrentUserPost = post?.userId?._id === currentUserId;
 
@@ -34,47 +40,52 @@ export const PostCommentBox = () => {
       </div>
 
       <div className="comments scrollbar-hidden overflow-y-scroll ">
-        {post.comments.map((commentInfo) => (
-          <div className="single-comment-box border-brand-secondaryBorder flex  border-b p-4 text-left">
-            <div className="w-4/5">
-              <h1 className="single-comment-user-name text-xl">
-                {commentInfo.userId?.userName}
-              </h1>
-              <p>{commentInfo.comment}</p>
+        {post.comments.map((commentInfo) => {
+          return (
+            <div
+              key={commentInfo._id}
+              className="single-comment-box border-brand-secondaryBorder flex  border-b p-4 text-left"
+            >
+              <div className="w-4/5">
+                <h1 className="single-comment-user-name text-xl">
+                  {commentInfo.userId?.userName}
+                </h1>
+                <p>{commentInfo.comment}</p>
+              </div>
+              <div className="relative w-1/5 flex flex-col items-end justify-center text-xl cursor-pointer">
+                <p>
+                  <BiDotsHorizontalRounded
+                    onClick={() => {
+                      setIsDeleteComment(!isDeleteComment);
+                      setDeleteToBeCommentId(commentInfo._id);
+                    }}
+                  />
+                </p>
+                {isCurrentUserPost ? (
+                  isDeleteComment &&
+                  deleteToBeCommentId === commentInfo._id && (
+                    <button
+                      className="delete-comment-btn absolute top-8 -right-3 text-sm border-brand-secondaryBorder border rounded px-2 font-medium hover:opacity-80"
+                      onClick={() =>
+                        dispatch(
+                          deleteCommentFromPost({
+                            token,
+                            postId,
+                            commentId: commentInfo._id,
+                          })
+                        )
+                      }
+                    >
+                      Delete
+                    </button>
+                  )
+                ) : (
+                  <></>
+                )}
+              </div>
             </div>
-            <div className="relative w-1/5 flex flex-col items-end justify-center text-xl cursor-pointer">
-              <p>
-                <BiDotsHorizontalRounded
-                  onClick={() => {
-                    setIsDeleteComment(!isDeleteComment);
-                    setDeleteToBeCommentId(commentInfo._id);
-                  }}
-                />
-              </p>
-              {isCurrentUserPost ? (
-                isDeleteComment &&
-                deleteToBeCommentId === commentInfo._id && (
-                  <button
-                    className="delete-comment-btn absolute top-8 -right-3 text-sm border-brand-secondaryBorder border rounded px-2 font-medium hover:opacity-80"
-                    onClick={() =>
-                      dispatch(
-                        deleteCommentFromPost({
-                          token,
-                          postId,
-                          commentId: commentInfo._id,
-                        })
-                      )
-                    }
-                  >
-                    Delete
-                  </button>
-                )
-              ) : (
-                <></>
-              )}
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
       <div className="comment-box-comment-bar flex justify-between align-center  w-full h-1/6 p-2 md:p-4 border-t border-brand-secondaryBorder">
         <input

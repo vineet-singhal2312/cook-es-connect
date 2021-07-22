@@ -129,7 +129,7 @@ export const postsSlice = createSlice({
       state.status = "loading";
     },
     [fetchPosts.rejected]: (state) => {
-      state.status = "fulfilled";
+      state.status = "idle";
     },
     [addPost.fulfilled]: (state, action) => {
       state.status = "fulfilled";

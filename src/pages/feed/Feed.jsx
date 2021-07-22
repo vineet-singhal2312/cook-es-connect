@@ -7,13 +7,11 @@ import { PostCommentBox } from "../../components/PostCard/PostCommentbox";
 import { FeedProfileCard } from "./FeedProfileCard";
 import { Header } from "../../components/header/Header";
 import { fetchPosts } from "../../features/postsSlice";
-import Interceptor from "../../middlewares/Interseptor";
 import { FeedPosts } from "./FeedPosts";
 import { Loader } from "../../components/loader/Loader";
 
 export const Feed = () => {
   const { token } = useSelector((state) => state.login);
-
   const { status, isCommentBox } = useSelector((state) => state.post);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -23,7 +21,6 @@ export const Feed = () => {
   }, [dispatch, status, token]);
   return (
     <>
-      <Interceptor />
       <Header />
       <BottomNav />
       {status === "loading" && <Loader />}

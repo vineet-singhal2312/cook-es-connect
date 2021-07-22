@@ -8,6 +8,8 @@ import {
   fetchProfileData,
   getPostsForProfile,
 } from "../../features/profileSlice";
+import { Loader } from "../../components/loader/Loader";
+import { PostCommentBox } from "../../components/PostCard/PostCommentbox";
 export const Profile = () => {
   const { token } = useSelector((state) => state.login);
 
@@ -28,6 +30,8 @@ export const Profile = () => {
     <>
       <Header />
       <BottomNav />
+      {(status === "loading" || post.status === "loading") && <Loader />}
+      {post.isCommentBox && <PostCommentBox />}
       <div className="profile sm:container md:mx-auto md:px-20  h-screen flex flex-col items-center">
         <div className="profile-content flex flex-col mt-12  items-center  pt-4 h-full w-full overflow-x-auto scrollbar-hidden ">
           <div className="flex justify-center w90">

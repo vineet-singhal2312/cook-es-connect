@@ -87,6 +87,12 @@ export const profileSlice = createSlice({
   name: "profile",
   initialState,
   reducers: {
+    setProfileStatusToIdle: (state) => {
+      return {
+        ...state,
+        status: "idle",
+      };
+    },
     EditProfileButtonPressed: (state, action) => {
       return {
         ...state,
@@ -121,13 +127,20 @@ export const profileSlice = createSlice({
       state.status = "fulfilled";
       state.profileData = action.payload;
     },
+    [addTimeLinePhoto.pending]: (state) => {
+      state.status = "loading";
+    },
     [updateUserInfo.fulfilled]: (state, action) => {
       state.status = "fulfilled";
       state.profileData = action.payload;
     },
+    [updateUserInfo.pending]: (state) => {
+      state.status = "loading";
+    },
   },
 });
 
-export const { EditProfileButtonPressed } = profileSlice.actions;
+export const { EditProfileButtonPressed, setProfileStatusToIdle } =
+  profileSlice.actions;
 
 export default profileSlice.reducer;

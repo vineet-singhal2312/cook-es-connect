@@ -11,7 +11,7 @@ export const ProfileEditModal = () => {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.login);
   return (
-    <div className=" edit-profile-box background-btn-1 flex flex-col justify-between rounded-lg z-40 text-brand-secondaryText w-80 h-40 md:w-96 md:h-60  absolute -left-8 top-12 md:top-12 md:left-56  bg-gray-500">
+    <div className=" edit-profile-box background-btn-1 flex flex-col justify-between rounded-lg z-40 text-brand-secondaryText w-80 h-40 md:w-96 md:h-60  absolute left-0 top-12 md:top-16 md:left-96  bg-gray-500">
       <div
         className="absolute top-1 right-1 text-3xl cursor-pointer"
         onClick={() => dispatch(EditProfileButtonPressed())}

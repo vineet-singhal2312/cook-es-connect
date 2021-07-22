@@ -10,7 +10,8 @@ export const LogInHandler = async (
   dispatch
 ) => {
   e.preventDefault();
-  await dispatch(userLogin({ email, password, navigate }));
+  dispatch(userLogin({ email, password, navigate }));
+  // await navigate("/feed");
 };
 export const LogOut = (dispatch) => {
   dispatch(userPressedLogout());
