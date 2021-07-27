@@ -4,8 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Loader } from "../../components/loader/Loader";
 import { LogInHandler, LogOut } from "../../utils/LogIn";
 export const LogIn = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("demoaccount@gmail.com");
+  const [password, setPassword] = useState("123456");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isUserLoggedIn, status } = useSelector((state) => state.login);

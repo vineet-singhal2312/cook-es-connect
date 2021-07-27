@@ -30,6 +30,7 @@ export const ProfileEditModal = () => {
       </div>
       <div className="w-full h-1/2 grid place-items-center ">
         <button
+          disabled={!updateToBeUserName}
           className="edit-username-btn background-btn-1 px-6 py-2 rounded-md  border-brand-secondaryBorder border"
           onClick={() => {
             dispatch(updateUserInfo({ token, updateToBeUserName }));

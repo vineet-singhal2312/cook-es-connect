@@ -1,5 +1,6 @@
 import axios from "axios";
 import { axiosLoad } from "../features/alertSlice";
+import { userLogin } from "../features/loginSlice";
 import { ApiService } from "./ApiServirces";
 
 export const SignUpHandler = async (
@@ -36,8 +37,9 @@ export const SignUpHandler = async (
       },
       "signup"
     );
+    await dispatch(userLogin({ email, password: password1, navigate }));
+
     dispatch(axiosLoad());
-    navigate("/");
   } catch (error) {
     console.log(error);
     dispatch(axiosLoad());

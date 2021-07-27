@@ -20,7 +20,6 @@ export const userLogin = createAsyncThunk(
         password,
       }
     );
-    console.log("hey---1");
     localStorage?.setItem(
       "login",
       JSON.stringify({
