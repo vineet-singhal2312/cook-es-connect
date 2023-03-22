@@ -13,7 +13,7 @@ export const addPost = createAsyncThunk(
   async ({ token, postTitle, postCaption, imageUrl }) => {
     const response = await axios.post(
       // `http://localhost:8000/posts`,
-      `https://cook-es-connect.herokuapp.com/posts`,
+      `https://encouraging-sheath-dress-bear.cyclic.app/posts`,
 
       {
         postTitle,
@@ -31,7 +31,7 @@ export const fetchPosts = createAsyncThunk(
   async (token) => {
     const response = await axios.get(
       // `http://localhost:8000/posts`,
-      `https://cook-es-connect.herokuapp.com/posts`,
+      `https://encouraging-sheath-dress-bear.cyclic.app/posts`,
 
       {
         headers: { authorization: token },
@@ -46,7 +46,7 @@ export const addReactionOnPost = createAsyncThunk(
   async ({ token, postId, routeName }) => {
     const response = await axios.post(
       // `http://localhost:8000/posts/${routeName}`,
-      `https://cook-es-connect.herokuapp.com/posts/${routeName}`,
+      `https://encouraging-sheath-dress-bear.cyclic.app/posts/${routeName}`,
 
       {
         postId,
@@ -62,7 +62,7 @@ export const deleteReactionFromPost = createAsyncThunk(
   async ({ token, postId, routeName }) => {
     const response = await axios.delete(
       // `http://localhost:8000/posts/${routeName}`,
-      `https://cook-es-connect.herokuapp.com/posts/${routeName}`,
+      `https://encouraging-sheath-dress-bear.cyclic.app/posts/${routeName}`,
 
       {
         data: {
@@ -80,7 +80,7 @@ export const addCommentOnPost = createAsyncThunk(
   async ({ token, postId, userComment }) => {
     const response = await axios.post(
       // `http://localhost:8000/posts/comments`,
-      `https://cook-es-connect.herokuapp.com/posts/comments`,
+      `https://encouraging-sheath-dress-bear.cyclic.app/posts/comments`,
 
       { postId, userComment },
       { headers: { authorization: token } }
@@ -93,7 +93,7 @@ export const deleteCommentFromPost = createAsyncThunk(
   async ({ token, postId, commentId }) => {
     const response = await axios.delete(
       // `http://localhost:8000/posts/comments`,
-      `https://cook-es-connect.herokuapp.com/posts/comments`,
+      `https://encouraging-sheath-dress-bear.cyclic.app/posts/comments`,
 
       {
         data: {

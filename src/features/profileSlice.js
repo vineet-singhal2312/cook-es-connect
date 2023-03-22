@@ -14,7 +14,7 @@ export const fetchProfileData = createAsyncThunk(
   async (token) => {
     const response = await axios.get(
       // `http://localhost:8000/profile`,
-      `https://cook-es-connect.herokuapp.com/profile`,
+      `https://encouraging-sheath-dress-bear.cyclic.app/profile`,
 
       {
         headers: { authorization: token },
@@ -28,7 +28,7 @@ export const fetchAllUsers = createAsyncThunk(
   async (token) => {
     const response = await axios.get(
       // `http://localhost:8000/profile/users`,
-      `https://cook-es-connect.herokuapp.com/profile/users`,
+      `https://encouraging-sheath-dress-bear.cyclic.app/profile/users`,
 
       {
         headers: { authorization: token },
@@ -42,7 +42,7 @@ export const getPostsForProfile = createAsyncThunk(
   async (token) => {
     const response = await axios.get(
       // `http://localhost:8000/profile/posts`,
-      `https://cook-es-connect.herokuapp.com/profile/posts`,
+      `https://encouraging-sheath-dress-bear.cyclic.app/profile/posts`,
 
       {
         headers: { authorization: token },
@@ -57,7 +57,7 @@ export const addTimeLinePhoto = createAsyncThunk(
   async ({ token, timelineImageUrl }) => {
     const response = await axios.post(
       // `http://localhost:8000/profile/timeline`,
-      `https://cook-es-connect.herokuapp.com/profile/timeline`,
+      `https://encouraging-sheath-dress-bear.cyclic.app/profile/timeline`,
 
       {
         timelineImageUrl,
@@ -73,7 +73,7 @@ export const updateUserInfo = createAsyncThunk(
   async ({ token, updateToBeUserName }) => {
     const response = await axios.put(
       // `http://localhost:8000/profile`,
-      `https://cook-es-connect.herokuapp.com/profile`,
+      `https://encouraging-sheath-dress-bear.cyclic.app/profile`,
 
       {
         updateToBeUserName,

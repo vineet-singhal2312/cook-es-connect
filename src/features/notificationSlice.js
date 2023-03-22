@@ -11,7 +11,7 @@ export const getNotifications = createAsyncThunk(
   async (token) => {
     const response = await axios.get(
       // `http://localhost:8000/notifications`,
-      `https://cook-es-connect.herokuapp.com/notifications`,
+      `https://encouraging-sheath-dress-bear.cyclic.app/notifications`,
 
       {
         headers: { authorization: token },
