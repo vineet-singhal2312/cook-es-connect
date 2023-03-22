@@ -13,7 +13,7 @@ export const fetchSearchedUsersList = createAsyncThunk(
   async ({ token, searchedUserName }) => {
     const response = await axios.get(
       // `http://localhost:8000/searched-profile/users/${searchedUserName}`,
-      `https://cook-es-connect.herokuapp.com/searched-profile/users/${searchedUserName}`,
+      `https://encouraging-sheath-dress-bear.cyclic.app/searched-profile/users/${searchedUserName}`,
 
       {
         headers: { authorization: token },
@@ -28,7 +28,7 @@ export const fetchSearchedUserProfileData = createAsyncThunk(
   async ({ token, searchedUserId }) => {
     const response = await axios.get(
       // `http://localhost:8000/searched-profile/${searchedUserId}`,
-      `https://cook-es-connect.herokuapp.com/searched-profile/${searchedUserId}`,
+      `https://encouraging-sheath-dress-bear.cyclic.app/searched-profile/${searchedUserId}`,
 
       {
         headers: { authorization: token },
@@ -44,7 +44,7 @@ export const getPostsOfSearchedUser = createAsyncThunk(
     const response = await axios.get(
       // `http://localhost:8000/searched-profile/posts/${searchedUserId}`,
 
-      `https://cook-es-connect.herokuapp.com/searched-profile/posts/${searchedUserId}`,
+      `https://encouraging-sheath-dress-bear.cyclic.app/searched-profile/posts/${searchedUserId}`,
 
       {
         headers: { authorization: token },
@@ -59,7 +59,7 @@ export const followProfile = createAsyncThunk(
   async ({ token, searchedUserId }) => {
     const response = await axios.post(
       // `http://localhost:8000/searched-profile/follow`,
-      `https://cook-es-connect.herokuapp.com/searched-profile/follow`,
+      `https://encouraging-sheath-dress-bear.cyclic.app/searched-profile/follow`,
 
       { searchedUserId },
       {
@@ -75,7 +75,7 @@ export const UnFollowProfile = createAsyncThunk(
   async ({ token, searchedUserId }) => {
     const response = await axios.delete(
       // `http://localhost:8000/searched-profile/follow`,
-      `https://cook-es-connect.herokuapp.com/searched-profile/follow`,
+      `https://encouraging-sheath-dress-bear.cyclic.app/searched-profile/follow`,
 
       {
         data: { searchedUserId },
